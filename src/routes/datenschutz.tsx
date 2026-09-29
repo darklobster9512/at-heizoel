@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { COMPANY, CompanyAddress, ContactLinks, LegalPage } from "@/components/legal/legal-page";
 import { legalJsonLd } from "@/lib/seo";
 
-const TITLE = "Datenschutzerklärung | Heizöl Deutschland";
-const DESCRIPTION = "Datenschutzerklärung von Heizöl Deutschland: Informationen zur Verarbeitung personenbezogener Daten bei Preisvergleich, Bestellung und Kontakt.";
+const TITLE = "Datenschutzerklärung | Heizöl Austria";
+const DESCRIPTION = "Datenschutzerklärung von Heizöl Austria: Informationen zur Verarbeitung personenbezogener Daten bei Preisvergleich, Bestellung und Kontakt.";
 
 export const Route = createFileRoute("/datenschutz")({
   head: () => ({ meta: [

@@ -4,16 +4,9 @@ import { Check, Info, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./logo";
-const ntvAward = { url: "/img/ntv-gesamtsieger-2025.png" };
-const bildAward = { url: "/img/bild-empfehlung-2026.png" };
-const weltAward = { url: "/img/die-welt-service-champion-2025.png" };
-const dtgvAward = { url: "/img/dtgv-testsieger.png" };
 const barzahlungAsset = { url: "/img/barzahlung.png" };
 const vorauskasseAsset = { url: "/img/vorauskasse.png" };
 const ecKarteAsset = { url: "/img/ec-karte.png" };
-const eKomiLogo = { url: "/img/ekomi.webp" };
-const googleIcon = { url: "/img/google-icon.webp" };
-const trustedShopsIcon = { url: "/img/trusted-shops-icon.png" };
 
 export function SectionHead({
   eyebrow,
@@ -37,34 +30,6 @@ export function SectionHead({
 
 const heizoelHero = { url: "/img/heizoel-hero.webp" };
 
-const STATS = [
-  { value: "25.429", label: "ZUFRIEDENE KUNDEN" },
-  { value: "4.9/5", label: "KUNDENBEWERTUNG" },
-  { value: "10+", label: "JAHRE ERFAHRUNG" },
-  { value: "500+", label: "PARTNER-HÄNDLER" },
-  { value: "€247", label: "Ø ERSPARNIS" },
-];
-
-export function TrustBar() {
-  return (
-    <section aria-label="Heizöl Deutschland in Zahlen" className="bg-background">
-      <div className="h-[3px] w-full bg-brand" />
-      <div className="mx-auto max-w-6xl px-5 py-6 md:py-8">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-5 md:gap-6">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-xl font-bold text-ink md:text-2xl">{stat.value}</p>
-              <p className="mt-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-custom md:text-[11px]">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 const CONDITIONS_LEFT = [
   ["Literpreis:", "ca. 128,78 € bis 163,15 € je 100 Liter (Heizöl EL)"],
   ["Liefermenge:", "Min. 1500 bis Max. 32.000 Liter"],
@@ -72,7 +37,7 @@ const CONDITIONS_LEFT = [
 
 const CONDITIONS_RIGHT = [
   ["Lieferzeit:", "ca. 4 bis 10 Werktage, Express möglich"],
-  ["Zahlungsarten:", "Vorkasse, Bar, EC-Karte, Rechnung"],
+  ["Zahlungsarten:", "Vorkasse, Bar, EC-Karte"],
 ];
 
 function ConditionsList({ items }: { items: string[][] }) {
@@ -274,7 +239,7 @@ export function MatchingOffers() {
             id="matching-offers-title"
             className="text-center text-[25px] font-bold leading-[1.25] text-conditions md:text-[28px]"
           >
-             Mit Heizöl Deutschland zum günstigsten Heizölpreis
+             Mit Heizöl Austria zum günstigsten Heizölpreis
           </h2>
 
           <ul className="mt-8 grid gap-x-[72px] gap-y-8 sm:grid-cols-2 md:-ml-[94px] md:w-[calc(100%+94px)]">
@@ -533,7 +498,7 @@ export function TrustLinks() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="pr-4">
             <h2 className="text-[26px] font-bold leading-[1.25] text-conditions">
-              Vertrauen Sie auf Heizöl Deutschland – Ihr Heizöl-Preisvergleich
+              Vertrauen Sie auf Heizöl Austria – Ihr Heizöl-Preisvergleich
             </h2>
             <p className="mt-5 text-[15px] leading-[1.6] text-conditions">
               Entdecken Sie jetzt weitere Themen und Vergleichsmöglichkeiten rund um
@@ -598,24 +563,7 @@ const FOOTER_RECHTLICHES = [
   { label: "Widerruf", href: "/widerruf" },
 ];
 
-const FOOTER_AWARDS = [
-  { src: ntvAward.url, alt: "ntv Gesamtsieger Heizöl-Preisvergleich 2025" },
-  { src: bildAward.url, alt: "Bild Höchste Empfehlung 2026" },
-  { src: weltAward.url, alt: "Die Welt Service-Champion 2025" },
-  { src: dtgvAward.url, alt: "DtGV Testsieger Heizölportale", mobileHidden: true },
-];
 
-function FooterStars() {
-  return (
-    <span className="inline-flex gap-0.5" aria-hidden="true">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} viewBox="0 0 24 24" className="size-4 fill-[#f1a319]">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
 
 function FooterLinkList({ items }: { items: { label: string; href: string }[] }) {
   return (
@@ -652,33 +600,13 @@ export function SiteFooter() {
       <div className="mx-auto max-w-[1283px] px-5 py-10 md:px-[66px] md:py-12">
         <div className="grid gap-8 md:grid-cols-[1.25fr_0.9fr_0.9fr_1.15fr] md:gap-10">
           <div>
-            <Link to="/" aria-label="Heizöl Deutschland Startseite" className="inline-block text-ink">
+            <Link to="/" aria-label="Heizöl Austria Startseite" className="inline-block text-ink">
               <Logo />
             </Link>
             <p className="mt-3 max-w-[280px] text-[13px] leading-[1.5] text-footer-text">
-              Heizöl online günstig bestellen. Tagesaktuelle Preise, deutschlandweite Lieferung,
-              über 25.000 zufriedene Kunden.
+              Heizöl online günstig bestellen. Tagesaktuelle Preise, österreichweite Lieferung,
+              deutsches Heizöl für Österreich.
             </p>
-            <div className="mt-4 flex items-center gap-5">
-              <img
-                src={eKomiLogo.url}
-                alt="eKomi Bewertungen"
-                className="h-7 w-auto object-contain"
-                loading="lazy"
-              />
-              <img
-                src={googleIcon.url}
-                alt="Google Bewertungen"
-                className="h-7 w-auto object-contain"
-                loading="lazy"
-              />
-              <img
-                src={trustedShopsIcon.url}
-                alt="Trusted Shops"
-                className="h-7 w-auto object-contain"
-                loading="lazy"
-              />
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-6 md:contents">
@@ -721,40 +649,12 @@ export function SiteFooter() {
                 loading="lazy"
               />
             </div>
-            <h4 className="mt-5 text-[12px] font-semibold uppercase tracking-[0.08em] text-ink">
-              Kundenbewertung
-            </h4>
-            <p className="mt-2 flex items-center gap-2 text-[13px] text-footer-text">
-              <FooterStars />
-              <span>
-                <strong className="font-semibold text-ink">4,9</strong>/5 – 25.000+ Bewertungen
-              </span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-y border-line bg-surface">
-        <div className="mx-auto max-w-[1283px] px-5 py-8 md:px-[66px]">
-          <h4 className="text-center text-[12px] font-semibold uppercase tracking-[0.12em] text-footer-text">
-            Auszeichnungen &amp; Vertrauen
-          </h4>
-          <div className="mt-5 flex flex-wrap items-center justify-center gap-5 md:gap-8">
-            {FOOTER_AWARDS.map((a) => (
-              <img
-                key={a.alt}
-                src={a.src}
-                alt={a.alt}
-                className={`${a.mobileHidden ? "hidden md:block" : "block"} h-14 w-auto max-w-[96px] object-contain md:h-16 md:max-w-[150px]`}
-                loading="lazy"
-              />
-            ))}
           </div>
         </div>
       </div>
 
       <div className="mx-auto flex max-w-[1283px] flex-col gap-2 px-5 py-4 text-[12px] text-footer-text md:flex-row md:items-center md:justify-between md:px-[66px]">
-        <p>© 2026 Demovero GmbH | heizoel-deutschland.com</p>
+        <p>© 2026 Demovero GmbH | heizoel-austria.at</p>
         <div className="flex gap-5">
           <Link to="/impressum" className="hover:underline">
             Impressum
@@ -783,7 +683,7 @@ export function ReferralBanner({ compact = false }: { compact?: boolean }) {
             <div className="relative">
               <img
                 src={heizoelHero.url}
-                 alt="Beraterin von Heizöl Deutschland mit Tablet"
+                 alt="Beraterin von Heizöl Austria mit Tablet"
                 loading="lazy"
                 decoding="async"
                 className="absolute bottom-0 left-[40px] h-[350px] w-auto object-contain object-bottom"
@@ -794,7 +694,7 @@ export function ReferralBanner({ compact = false }: { compact?: boolean }) {
                 Jetzt Heizöl günstiger bestellen!
               </h2>
               <p className="mt-5 max-w-[540px] text-[15px] leading-[1.7] text-muted-custom">
-                Schließen Sie sich <strong>25.000+ zufriedenen Kunden</strong> an und sparen Sie durchschnittlich €247
+                Vergleichen Sie den Preis für deutsches Heizöl an Ihrer österreichischen Lieferadresse.
               </p>
               <div className="mt-7">
                 <Button asChild className="h-12 w-full max-w-[250px] text-[13px] font-bold !text-white shadow-md">
@@ -802,7 +702,7 @@ export function ReferralBanner({ compact = false }: { compact?: boolean }) {
                 </Button>
               </div>
               <p className="mt-4 max-w-[540px] text-[13px] leading-[1.6] text-muted-custom/70">
-                Keine Anmeldung nötig • Sofortiger Preisvergleich • Garantiert günstigste Preise
+                Keine Anmeldung nötig • Sofortiger Preisvergleich • Preis für Ihre PLZ berechnen
               </p>
             </div>
           </div>
@@ -813,7 +713,7 @@ export function ReferralBanner({ compact = false }: { compact?: boolean }) {
         <div className={`flex justify-center bg-white ${compact ? "pt-2" : "pt-6"}`}>
           <img
             src={heizoelHero.url}
-             alt="Beraterin von Heizöl Deutschland mit Tablet"
+             alt="Beraterin von Heizöl Austria mit Tablet"
             loading="lazy"
             decoding="async"
             className="h-[240px] w-auto object-contain"
@@ -824,7 +724,7 @@ export function ReferralBanner({ compact = false }: { compact?: boolean }) {
             Jetzt Heizöl günstiger bestellen!
           </h2>
           <p className="mt-4 text-[15px] leading-[1.7] text-muted-custom">
-            Schließen Sie sich <strong>25.000+ zufriedenen Kunden</strong> an und sparen Sie durchschnittlich €247
+            Vergleichen Sie den Preis für deutsches Heizöl an Ihrer österreichischen Lieferadresse.
           </p>
           <div className="mt-6 flex justify-center">
             <Button asChild className="h-12 w-full max-w-[280px] text-[13px] font-bold !text-white shadow-md">
@@ -832,7 +732,7 @@ export function ReferralBanner({ compact = false }: { compact?: boolean }) {
             </Button>
           </div>
           <p className="mt-4 px-2 text-[13px] leading-[1.6] text-muted-custom/70">
-            Keine Anmeldung nötig • Sofortiger Preisvergleich • Garantiert günstigste Preise
+            Keine Anmeldung nötig • Sofortiger Preisvergleich • Preis für Ihre PLZ berechnen
           </p>
         </div>
       </div>
@@ -852,18 +752,13 @@ export function HeizoelServiceIntro() {
         </h2>
         <div className="mx-auto mt-8 max-w-[920px] space-y-5 text-[16px] leading-[1.65] text-conditions">
           <p>
-            heizoel-deutschland.com ist ein Online-Service für günstige Heizölpreise. Seit{" "}
-            <strong>2014</strong> können Kunden bei uns Heizöl online kaufen — einfach, schnell und zum garantiert
-            besten Preis. Unser Preisrechner vergleicht automatisch die Heizölpreise heute von über{" "}
-            <strong>500 zertifizierten Partnerhändlern</strong> deutschlandweit und findet den optimalen
-            Bestellzeitpunkt für maximale Ersparnis.
+            Heizöl Austria bietet deutsches Heizöl für Kundinnen und Kunden in Österreich an.
+            Geben Sie Ihre österreichische Postleitzahl und Liefermenge ein, um Ihren Preis zu berechnen.
+            Deutsches Heizöl kann dabei günstiger sein; maßgeblich ist stets der angezeigte Endpreis.
           </p>
           <p>
-            Über <strong>25.000 zufriedene Kunden</strong> bewerten unseren Service mit durchschnittlich{" "}
-            <strong>4,9 von 5 Sternen</strong>. Die Kundenzufriedenheit liegt bei <strong>98,9%</strong>.
-            Kunden sparen durchschnittlich <strong>€247</strong> pro Heizöl-Bestellung gegenüber dem
-            Marktdurchschnitt. Wir bieten eine <strong>Festpreisgarantie</strong> — Ihr Heizölpreis pro Liter
-            bleibt auch bei steigenden Ölpreisen fixiert bis zur Lieferung.
+            Vergleichen Sie den Preis für Ihre Adresse und Ihre gewünschte Menge. Vor dem Abschluss
+            sehen Sie den Gesamtpreis, die Lieferbedingungen und die angebotenen Zahlungsarten.
           </p>
           <p>
             Heizöl bestellen war noch nie so einfach: PLZ und Menge eingeben, Preis vergleichen, online bestellen —
@@ -873,9 +768,8 @@ export function HeizoelServiceIntro() {
             <strong>Endpreise inklusive MwSt. und Lieferung</strong> — angegeben in <strong>€/100L</strong>.
           </p>
           <p>
-            Flexible Zahlungsarten ohne Aufpreis: Barzahlung, EC-Karte, Rechnung oder Vorauskasse. Standard-Lieferzeit
-            ca. <strong>7 Werktage</strong>. Bei Verspätung erhalten Sie <strong>50€ Entschädigung</strong>.{" "}
-            heizoel-deutschland.com — Ihr Partner für günstiges Heizöl in ganz Deutschland.
+            Die verfügbaren Zahlungsarten und Liefertermine werden Ihnen bei der Bestellung angezeigt.
+            heizoel-austria.at — deutsches Heizöl für Österreich.
           </p>
         </div>
       </div>
@@ -884,22 +778,15 @@ export function HeizoelServiceIntro() {
 }
 
 const REGIONAL_BUTTONS: { label: string; state: string }[] = [
-  { label: "Heizölpreise Baden-Württemberg", state: "baden-wuerttemberg" },
-  { label: "Heizöl Bayern kaufen", state: "bayern" },
-  { label: "Heizölpreise Berlin", state: "berlin" },
-  { label: "Heizöl Brandenburg bestellen", state: "brandenburg" },
-  { label: "Heizölpreise Bremen", state: "bremen" },
-  { label: "Heizöl Hamburg kaufen", state: "hamburg" },
-  { label: "Heizölpreise Hessen", state: "hessen" },
-  { label: "Heizöl Meckl.-Vorpommern", state: "mecklenburg-vorpommern" },
-  { label: "Heizölpreise Niedersachsen", state: "niedersachsen" },
-  { label: "Heizöl NRW kaufen", state: "nordrhein-westfalen" },
-  { label: "Heizölpreise Rheinland-Pfalz", state: "rheinland-pfalz" },
-  { label: "Heizöl Saarland bestellen", state: "saarland" },
-  { label: "Heizölpreise Sachsen", state: "sachsen" },
-  { label: "Heizöl Sachsen-Anhalt", state: "sachsen-anhalt" },
-  { label: "Heizölpreise Schleswig-Holstein", state: "schleswig-holstein" },
-  { label: "Heizöl Thüringen bestellen", state: "thueringen" },
+  { label: "Heizölpreise Burgenland", state: "burgenland" },
+  { label: "Heizölpreise Kärnten", state: "kaernten" },
+  { label: "Heizölpreise Niederösterreich", state: "niederoesterreich" },
+  { label: "Heizölpreise Oberösterreich", state: "oberoesterreich" },
+  { label: "Heizölpreise Salzburg", state: "salzburg" },
+  { label: "Heizölpreise Steiermark", state: "steiermark" },
+  { label: "Heizölpreise Tirol", state: "tirol" },
+  { label: "Heizölpreise Vorarlberg", state: "vorarlberg" },
+  { label: "Heizölpreise Wien", state: "wien" },
 ];
 
 export function RegionalSeo() {
@@ -917,7 +804,7 @@ export function RegionalSeo() {
             Heizöl in Ihrem Bundesland bestellen
           </h2>
           <p className="mx-auto mt-3 max-w-[720px] text-[13px] leading-[1.7] text-muted-custom">
-            Tagesaktuelle Heizölpreise für alle 16 Bundesländer — Lieferung deutschlandweit, Festpreisgarantie.
+            Tagesaktuelle Heizölpreise für alle 9 Bundesländer — Lieferung österreichweit, Festpreisgarantie.
           </p>
         </div>
         <div className="mt-6 grid grid-cols-2 gap-2 md:grid-cols-4">
@@ -939,45 +826,27 @@ export function RegionalSeo() {
 }
 
 const CITY_LINKS: { label: string; city: string }[] = [
-  { label: "Heizölpreise Berlin", city: "berlin-berlin" },
-  { label: "Heizöl Hamburg kaufen", city: "hamburg-hamburg" },
-  { label: "Heizölpreis München heute", city: "muenchen-bayern" },
-  { label: "Heizöl Köln bestellen", city: "koeln-nordrhein-westfalen" },
-  { label: "Heizölpreise Frankfurt", city: "frankfurt-am-main-hessen" },
-  { label: "Heizöl Düsseldorf bestellen", city: "duesseldorf-nordrhein-westfalen" },
-  { label: "Heizölpreis Dortmund heute", city: "dortmund-nordrhein-westfalen" },
-  { label: "Heizöl Essen kaufen", city: "essen-nordrhein-westfalen" },
-  { label: "Heizölpreise Leipzig", city: "leipzig-sachsen" },
-  { label: "Heizöl Bremen bestellen", city: "bremen-bremen" },
-  { label: "Heizölpreise Dresden", city: "dresden-sachsen" },
-  { label: "Heizöl Hannover kaufen", city: "hannover-niedersachsen" },
-  { label: "Heizölpreis Nürnberg heute", city: "nuernberg-bayern" },
-  { label: "Heizöl Duisburg bestellen", city: "duisburg-nordrhein-westfalen" },
-  { label: "Heizölpreise Bielefeld", city: "bielefeld-nordrhein-westfalen" },
-  { label: "Heizöl Bochum bestellen", city: "bochum-nordrhein-westfalen" },
-  { label: "Heizölpreise Bonn", city: "bonn-nordrhein-westfalen" },
-  { label: "Heizöl Münster kaufen", city: "muenster-nordrhein-westfalen" },
-  { label: "Heizölpreis Kiel heute", city: "kiel-schleswig-holstein" },
-  { label: "Heizölpreise Chemnitz", city: "chemnitz-sachsen" },
+  { label: "Heizölpreise Wien", city: "wien-wien" },
+  { label: "Heizölpreise Graz", city: "graz-steiermark" },
+  { label: "Heizölpreise Linz", city: "linz-oberoesterreich" },
+  { label: "Heizölpreise Salzburg", city: "salzburg-salzburg" },
+  { label: "Heizölpreise Innsbruck", city: "innsbruck-tirol" },
+  { label: "Heizölpreise Klagenfurt", city: "klagenfurt-am-woerthersee-kaernten" },
+  { label: "Heizölpreise St. Pölten", city: "sankt-poelten-niederoesterreich" },
+  { label: "Heizölpreise Bregenz", city: "bregenz-vorarlberg" },
+  { label: "Heizölpreise Eisenstadt", city: "eisenstadt-burgenland" },
 ];
 
 const STATE_LINKS: { label: string; state: string }[] = [
-  { label: "Heizölpreise Baden-Württemberg", state: "baden-wuerttemberg" },
-  { label: "Heizöl Bayern kaufen", state: "bayern" },
-  { label: "Heizölpreise Berlin", state: "berlin" },
-  { label: "Heizöl Brandenburg bestellen", state: "brandenburg" },
-  { label: "Heizölpreise Bremen", state: "bremen" },
-  { label: "Heizöl Hamburg kaufen", state: "hamburg" },
-  { label: "Heizölpreise Hessen", state: "hessen" },
-  { label: "Heizöl Meckl.-Vorpommern bestellen", state: "mecklenburg-vorpommern" },
-  { label: "Heizölpreise Niedersachsen", state: "niedersachsen" },
-  { label: "Heizöl NRW kaufen", state: "nordrhein-westfalen" },
-  { label: "Heizölpreise Rheinland-Pfalz", state: "rheinland-pfalz" },
-  { label: "Heizöl Saarland bestellen", state: "saarland" },
-  { label: "Heizölpreise Sachsen", state: "sachsen" },
-  { label: "Heizöl Sachsen-Anhalt kaufen", state: "sachsen-anhalt" },
-  { label: "Heizölpreise Schleswig-Holstein", state: "schleswig-holstein" },
-  { label: "Heizöl Thüringen bestellen", state: "thueringen" },
+  { label: "Heizölpreise Burgenland", state: "burgenland" },
+  { label: "Heizölpreise Kärnten", state: "kaernten" },
+  { label: "Heizölpreise Niederösterreich", state: "niederoesterreich" },
+  { label: "Heizölpreise Oberösterreich", state: "oberoesterreich" },
+  { label: "Heizölpreise Salzburg", state: "salzburg" },
+  { label: "Heizölpreise Steiermark", state: "steiermark" },
+  { label: "Heizölpreise Tirol", state: "tirol" },
+  { label: "Heizölpreise Vorarlberg", state: "vorarlberg" },
+  { label: "Heizölpreise Wien", state: "wien" },
 ];
 
 const seoLinkClass =
@@ -1006,7 +875,7 @@ export function CitySeo() {
           id="city-seo-title"
           className="text-left text-[20px] font-semibold leading-[1.25] text-conditions md:text-[24px]"
         >
-          Heizöl &amp; Heizölpreise in deutschen Städten
+          Heizöl &amp; Heizölpreise in österreichischen Orten
         </h2>
         <SeoLinkGrid title="">
           {CITY_LINKS.map((item) => (

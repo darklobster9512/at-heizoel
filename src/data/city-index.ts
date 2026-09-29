@@ -12,7 +12,7 @@ for (const c of CITIES) {
   grouped.set(c.state, list);
 }
 
-/** Städte eines Bundeslands, absteigend nach Einwohnerzahl */
+/** Orte eines Bundeslands, nach Ortsnamen */
 export function citiesOfState(state: StateSlug): City[] {
   return grouped.get(state) ?? [];
 }
@@ -22,12 +22,13 @@ export function citiesOfStateAlpha(state: StateSlug): City[] {
   return [...citiesOfState(state)].sort((a, b) => a.name.localeCompare(b.name, "de"));
 }
 
-/** Nachbarorte: nächstliegende PLZ-Bereiche im gleichen Bundesland */
+/** Nachbarorte: geografisch nächstliegende Orte im gleichen Bundesland */
 export function nearbyCities(city: City, count = 10): City[] {
   const others = citiesOfState(city.state).filter((c) => c.slug !== city.slug);
-  const base = Number(city.plz);
+  const rad = Math.PI / 180;
+  const baseLat = city.lat * rad;
   return others
-    .map((c) => ({ c, d: Math.abs(Number(c.plz) - base) }))
+    .map((c) => ({ c, d: Math.acos(Math.min(1, Math.max(-1, Math.sin(baseLat) * Math.sin(c.lat * rad) + Math.cos(baseLat) * Math.cos(c.lat * rad) * Math.cos((city.lon - c.lon) * rad)))) }))
     .sort((a, b) => a.d - b.d)
     .slice(0, count)
     .map((e) => e.c);

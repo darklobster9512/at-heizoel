@@ -5,10 +5,8 @@ import { Check, CheckCircle2, Mail, MapPin, Phone, ThumbsUp } from "lucide-react
 import { SiteHeader } from "@/components/landing/site-header";
 import { SiteFooter } from "@/components/landing/sections";
 import { loadOrderConfirmation, type OrderConfirmation } from "@/lib/order-draft";
-const ekomi = { url: "/img/ekomi.webp" };
-const trustedShops = { url: "/img/trusted-shops-icon.png" };
 
-const TITLE = "Bestellung eingegangen | Heizöl Deutschland";
+const TITLE = "Bestellung eingegangen | Heizöl Austria";
 const DESCRIPTION = "Ihre Heizölbestellung ist bei uns eingegangen. Vielen Dank für Ihren Auftrag.";
 
 export const Route = createFileRoute("/bestaetigung")({
@@ -31,8 +29,8 @@ export const Route = createFileRoute("/bestaetigung")({
 });
 
 const fmtEuro = (v: number) =>
-  v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtLiters = (v: number) => v.toLocaleString("de-DE");
+  v.toLocaleString("de-AT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtLiters = (v: number) => v.toLocaleString("de-AT");
 
 const ADVANTAGES = [
   {
@@ -40,7 +38,7 @@ const ADVANTAGES = [
     text: "Direkter Handel ohne Zwischenhändler-Aufschläge.",
   },
   {
-    title: "Deutschlandweite Lieferung inklusive",
+    title: "Österreichweite Lieferung inklusive",
     text: "Alle Lieferkosten sind bereits im Preis enthalten.",
   },
   {
@@ -49,18 +47,6 @@ const ADVANTAGES = [
   },
 ];
 
-function Stars({ className = "size-3.5" }: { className?: string }) {
-  return (
-    <span className="inline-flex gap-0.5" aria-label="5 von 5 Sternen" role="img">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} viewBox="0 0 24 24" className={`${className} fill-[#f1a319]`} aria-hidden="true">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
-
 function slotText(order: OrderConfirmation): string {
   const slot = order.slot;
   if (!slot) return "wird telefonisch abgestimmt";
@@ -68,7 +54,7 @@ function slotText(order: OrderConfirmation): string {
   const d = new Date(`${slot.date}T00:00:00`);
   const day = Number.isNaN(d.getTime())
     ? ""
-    : `${d.toLocaleDateString("de-DE", { weekday: "short" })} ${d.toLocaleDateString("de-DE", {
+    : `${d.toLocaleDateString("de-AT", { weekday: "short" })} ${d.toLocaleDateString("de-AT", {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
@@ -231,19 +217,6 @@ function BestaetigungPage() {
             <p className="border-b border-line px-4 py-3 text-center text-[14px] font-bold text-conditions">
               Preis ist bindend bei Bestellung. Es entstehen keine weiteren Kosten!
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 px-4 py-4 sm:gap-5">
-              <img src={ekomi.url} alt="eKomi Siegel" className="h-9 w-auto object-contain" />
-              <img
-                src={trustedShops.url}
-                alt="Trusted Shops Käuferschutz"
-                className="h-9 w-auto object-contain"
-              />
-              <div className="text-center">
-                <Stars />
-                <p className="text-[14px] font-bold text-conditions">4,9/5</p>
-                <p className="text-[11px] text-muted-custom">25.000+ Bewertungen</p>
-              </div>
-            </div>
           </div>
 
           {/* Vorteile */}

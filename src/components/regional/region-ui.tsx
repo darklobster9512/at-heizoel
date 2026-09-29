@@ -186,7 +186,7 @@ export function CityGrid({ cities, title }: { cities: City[]; title: string }) {
                 {c.name}
               </span>
               <span className="mt-0.5 block text-[11px] text-muted-custom">
-                {num(c.population)} Einwohner · PLZ {c.plz}
+                PLZ {c.plz}
               </span>
             </Link>
           ))}

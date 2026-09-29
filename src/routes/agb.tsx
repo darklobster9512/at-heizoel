@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { COMPANY, CompanyAddress, ContactLinks, LegalPage } from "@/components/legal/legal-page";
 import { legalJsonLd } from "@/lib/seo";
 
-const TITLE = "Allgemeine Geschäftsbedingungen | Heizöl Deutschland";
-const DESCRIPTION = "AGB für Heizölbestellungen über heizoel-deutschland.com: Vertragsschluss, Preise, Lieferung, Zahlung, Gewährleistung und Verbraucherrechte.";
+const TITLE = "Allgemeine Geschäftsbedingungen | Heizöl Austria";
+const DESCRIPTION = "AGB für Heizölbestellungen über heizoel-austria.at: Vertragsschluss, Preise, Lieferung, Zahlung, Gewährleistung und Verbraucherrechte.";
 
 export const Route = createFileRoute("/agb")({
   head: () => ({ meta: [
@@ -15,12 +15,12 @@ export const Route = createFileRoute("/agb")({
 });
 
 function AgbPage() {
-  return <LegalPage title="Allgemeine Geschäftsbedingungen" intro="Diese Bedingungen regeln die Nutzung des Onlineshops und die Bestellung von Heizöl über heizoel-deutschland.com." sections={[
+  return <LegalPage title="Allgemeine Geschäftsbedingungen" intro="Diese Bedingungen regeln die Nutzung des Onlineshops und die Bestellung von Heizöl über heizoel-austria.at." sections={[
     { id: "anbieter", title: "1. Anbieter und Geltungsbereich", content: <><p>Diese Allgemeinen Geschäftsbedingungen gelten für Verträge, die Verbraucher oder Unternehmer über {COMPANY.shop} abschließen. Betreiber des Onlineshops ist:</p><CompanyAddress /><ContactLinks /></> },
     { id: "angebot", title: "2. Angebot und Vertragsschluss", content: <p>Die Darstellung von Preisen und Produkten ist noch kein verbindliches Angebot. Mit dem Absenden der Bestellung geben Sie ein verbindliches Angebot ab. Eine automatisch versandte Eingangsbestätigung dokumentiert den Eingang, stellt jedoch noch keine Annahme dar. Der Vertrag kommt mit ausdrücklicher Auftragsbestätigung oder Ausführung der Lieferung zustande.</p> },
     { id: "preise", title: "3. Preise und Liefermenge", content: <><p>Alle angezeigten Endpreise enthalten die gesetzliche Umsatzsteuer und die ausgewiesenen Lieferkosten. Maßgeblich sind Lieferort, Produkt, Menge, Lieferstellen und gewählte Zusatzleistungen.</p><p>Heizöl wird mit geeichten Messanlagen abgegeben. Abgerechnet wird die tatsächlich gelieferte Menge. Eine technisch oder tankbedingt geringere Liefermenge wird litergenau berücksichtigt; marktübliche, zumutbare Mengenabweichungen bleiben zulässig.</p></> },
     { id: "lieferung", title: "4. Lieferung und Mitwirkung", content: <><p>Lieferzeiten sind nur verbindlich, wenn sie ausdrücklich bestätigt wurden. Der Kunde stellt sicher, dass Zufahrt, Tankanlage und Befüllanschluss sicher zugänglich und technisch geeignet sind. Besondere Zufahrts-, Schlauch- oder Fahrzeuganforderungen müssen bei der Bestellung angegeben werden.</p><p>Ist eine Lieferung aus vom Kunden zu vertretenden Gründen nicht möglich, können nachgewiesene Mehrkosten berechnet werden.</p></> },
-    { id: "zahlung", title: "5. Zahlung", content: <p>Es gelten die im Bestellprozess angebotenen Zahlungsarten und Fälligkeiten. Je nach Region und Kundenstatus können Vorkasse, Anzahlung, Barzahlung, Girocard oder Rechnung verfügbar sein. Bei Zahlungsverzug gelten die gesetzlichen Vorschriften.</p> },
+    { id: "zahlung", title: "5. Zahlung", content: <p>Es gelten die im Bestellprozess angebotenen Zahlungsarten und Fälligkeiten. Je nach Region und Kundenstatus können Vorkasse, Barzahlung oder Girocard verfügbar sein. Bei Zahlungsverzug gelten die gesetzlichen Vorschriften.</p> },
     { id: "eigentum", title: "6. Eigentumsvorbehalt", content: <p>Bis zur vollständigen Bezahlung bleibt die gelieferte Ware Eigentum des jeweiligen Verkäufers. Eine Vermischung im Tank berührt die gesetzlichen Regelungen zum Eigentumsvorbehalt.</p> },
     { id: "widerruf", title: "7. Widerrufsrecht", content: <p>Für Verbraucher gelten die gesetzlichen Widerrufsregelungen. Bei Heizöl kann die Ausnahme für Waren greifen, deren Preis von Schwankungen auf dem Finanzmarkt abhängt, auf die der Unternehmer keinen Einfluss hat. Einzelheiten enthält die <Link to="/widerruf" className="font-medium text-brand hover:underline">Widerrufsbelehrung</Link>.</p> },
     { id: "gewaehrleistung", title: "8. Gewährleistung", content: <p>Es gelten die gesetzlichen Mängelrechte. Offensichtliche Beanstandungen zu Menge oder Qualität sollten möglichst bei Lieferung auf dem Lieferschein vermerkt und unverzüglich gemeldet werden; gesetzliche Rechte werden dadurch nicht eingeschränkt.</p> },

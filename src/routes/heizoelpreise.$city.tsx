@@ -36,7 +36,7 @@ export const Route = createFileRoute("/heizoelpreise/$city")({
       { name: "googlebot", content: "noindex, nofollow" }] };
     }
     const { city, state } = loaderData;
-    const title = `Heizölpreise ${city.name} – ab ${euro(PRICE_PER_100)} €/100 L | Heizöl Deutschland`;
+    const title = `Heizölpreise ${city.name} – ab ${euro(PRICE_PER_100)} €/100 L | Heizöl Austria`;
     const description = `Heizölpreis ${city.name} (${state.name}) heute ab ${euro(PRICE_PER_100)} € pro 100 Liter, ${num(SAMPLE_LITERS)} Liter ca. ${euro(sampleTotal())} €. Lieferung in ${DELIVERY_DAYS} Werktagen, PLZ ${city.plz}.`;
     const url = `/heizoelpreise/${params.city}`;
     return {
@@ -89,7 +89,7 @@ export const Route = createFileRoute("/heizoelpreise/$city")({
                       "@type": "PostalAddress",
                       postalCode: city.plz,
                       addressRegion: state.name,
-                      addressCountry: "DE",
+                      addressCountry: "AT",
                     },
                   },
                 },
@@ -151,10 +151,8 @@ function CityPage() {
               Heizölpreise in {state.name}
             </h2>
             <p className="mt-3 max-w-[720px] text-[14px] leading-[1.75] text-hero-text">
-              {city.name}
-              {city.district ? ` (Landkreis ${city.district})` : ""} liegt in {state.name} mit rund{" "}
-              {num(city.population)} Einwohnern. Eine Übersicht aller Orte mit Heizöl-Lieferung
-              finden Sie auf der Landesseite.
+              {city.name} liegt in {state.name}. Eine Übersicht der österreichischen Orte
+              finden Sie auf der Bundeslandseite.
             </p>
             <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2">
               <Link

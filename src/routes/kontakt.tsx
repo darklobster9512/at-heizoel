@@ -32,9 +32,9 @@ import {
   webPage,
 } from "@/lib/seo";
 
-const TITLE = "Kontakt & Hilfe — Heizöl Deutschland Kundenservice";
+const TITLE = "Kontakt & Hilfe — Heizöl Austria Kundenservice";
 const DESCRIPTION =
-  "Kontakt zum Kundenservice von Heizöl Deutschland: Kontaktformular, E-Mail und Telefon für Fragen zu Heizölpreisen, Lieferterminen und Bestellungen.";
+  "Kontakt zum Kundenservice von Heizöl Austria: Kontaktformular, E-Mail und Telefon für Fragen zu Heizölpreisen, Lieferterminen und Bestellungen.";
 const URL = "/kontakt";
 
 export const Route = createFileRoute("/kontakt")({
@@ -84,7 +84,7 @@ const CONTACTS: ContactItem[] = [
     icon: Phone,
     title: "Telefon",
     value: "0800 - 000 000 00",
-    hint: "Kostenlos aus dem deutschen Festnetz",
+    hint: "Telefonischer Kontakt",
     href: "tel:080000000000",
     isInternal: false,
   },
@@ -321,7 +321,7 @@ function KontaktPage() {
                             id="calc-zip"
                             name="calc-zip"
                             inputMode="numeric"
-                            placeholder="z. B. 10115"
+                            placeholder="z. B. 1010"
                             maxLength={5}
                             value={calcZip}
                             onChange={(e) => setCalcZip(e.target.value)}
@@ -418,12 +418,12 @@ function KontaktPage() {
 
                       <div className="grid gap-2">
                         <Label htmlFor="zip">PLZ</Label>
-                        <Input id="zip" name="zip" placeholder="z. B. 10115" maxLength={10} required />
+                        <Input id="zip" name="zip" placeholder="z. B. 1010" maxLength={10} required />
                       </div>
 
                       <div className="grid gap-2">
                         <Label htmlFor="city">Stadt</Label>
-                        <Input id="city" name="city" placeholder="z. B. Berlin" maxLength={100} required />
+                        <Input id="city" name="city" placeholder="z. B. Wien" maxLength={100} required />
                       </div>
 
                       <div className="grid gap-2 md:col-span-2">

@@ -27,7 +27,7 @@ const VOICES: Voice[] = [
     author: "Jessica Meyer",
   },
   {
-    text: "Alles online erledigt, ohne Telefonate. Beim nächsten Tanken bestelle ich wieder über Heizöl Deutschland.",
+    text: "Alles online erledigt, ohne Telefonate. Beim nächsten Tanken bestelle ich wieder über Heizöl Austria.",
     author: "Renate Hoffmann",
   },
   {
@@ -67,7 +67,7 @@ const VOICES: Voice[] = [
     author: "Frank Müller",
   },
   {
-    text: "Alles lief reibungslos von der Anfrage bis zur Lieferung. Daumen hoch für Heizöl Deutschland.",
+    text: "Alles lief reibungslos von der Anfrage bis zur Lieferung. Daumen hoch für Heizöl Austria.",
     author: "Birgit Keller",
   },
 ];
@@ -210,7 +210,7 @@ export function CustomerVoices() {
             </span>
             <Stars rating={r.value} />
             <span className="text-[13px] text-muted-custom">
-              {r.value.toLocaleString("de-DE")}/5
+              {r.value.toLocaleString("de-AT")}/5
               {r.count ? ` von ${r.count} Bewertungen` : ""}
             </span>
           </div>

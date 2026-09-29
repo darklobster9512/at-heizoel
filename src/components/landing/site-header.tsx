@@ -22,7 +22,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Logo } from "./logo";
-import { RatingBadge } from "./rating-badge";
 
 const HEIZOEL_LINKS = [
   {
@@ -34,7 +33,7 @@ const HEIZOEL_LINKS = [
   {
     to: "/preisrechner",
     title: "Heizöl kaufen",
-    description: "Direkt vom Händler - bis 15% sparen",
+    description: "Deutsches Heizöl für Österreich",
     icon: Fuel,
   },
   {
@@ -46,7 +45,7 @@ const HEIZOEL_LINKS = [
   {
     to: "/heizoelpreise",
     title: "Heizölpreise nach Region",
-    description: "Alle Bundesländer & über 700 Städte",
+    description: "9 Bundesländer & über 2.000 Orte",
     icon: MapPin,
   },
 ] as const;
@@ -62,7 +61,7 @@ const INFO_SERVICE_LINKS = [
   {
     to: "/bewertungen",
     title: "Kundenbewertungen",
-    description: "25.000+ Bewertungen & Trust-Siegel",
+    description: "Erfahrungen mit unserem Service",
     icon: Star,
   },
   {
@@ -161,7 +160,7 @@ export function SiteHeader() {
             <SheetHeader className="border-b border-line px-5 py-4 text-left">
               <SheetTitle>
                 <Logo className="h-auto w-[134px] text-brand-logo" />
-                <span className="sr-only">Heizöl Deutschland Navigation</span>
+                <span className="sr-only">Heizöl Austria Navigation</span>
               </SheetTitle>
             </SheetHeader>
 
@@ -238,9 +237,6 @@ export function SiteHeader() {
               </div>
             </nav>
 
-            <div className="border-t border-line bg-surface px-5 py-5">
-              <RatingBadge expanded />
-            </div>
           </SheetContent>
         </Sheet>
 
@@ -251,13 +247,7 @@ export function SiteHeader() {
           <Logo className="h-auto w-[104px] text-brand-logo md:w-[152px]" />
         </Link>
 
-        <div className="flex shrink-0 items-center md:hidden">
-          <RatingBadge compact />
-        </div>
-
         <div className="hidden items-center gap-5 md:flex">
-          <RatingBadge />
-          <span className="hidden h-8 w-px bg-line sm:block" />
           <Link
             to="/preisrechner"
             className="inline-flex items-center gap-1 text-sm font-semibold text-brand-deep transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"

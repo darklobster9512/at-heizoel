@@ -3,8 +3,8 @@ import { LegalPage } from "@/components/legal/legal-page";
 import { legalJsonLd } from "@/lib/seo";
 
 
-const TITLE = "Cookie-Einstellungen | Heizöl Deutschland";
-const DESCRIPTION = "Informationen zu Cookies und lokalen Speicherungen auf heizoel-deutschland.com sowie Hinweise zur Verwaltung im Browser.";
+const TITLE = "Cookie-Einstellungen | Heizöl Austria";
+const DESCRIPTION = "Informationen zu Cookies und lokalen Speicherungen auf heizoel-austria.at sowie Hinweise zur Verwaltung im Browser.";
 
 export const Route = createFileRoute("/cookie-einstellungen")({
   head: () => ({ meta: [

@@ -1,9 +1,9 @@
 /**
- * Zentrale SEO-Bausteine (JSON-LD) für Heizöl Deutschland.
+ * Zentrale SEO-Bausteine (JSON-LD) für Heizöl Austria.
  * Alle URLs sind relativ – Crawler lösen sie gegen die aktuelle Domain auf.
  */
 
-export const SITE_NAME = "Heizöl Deutschland";
+export const SITE_NAME = "Heizöl Austria";
 export const LEGAL_NAME = "Demovero GmbH";
 export const SITE_EMAIL = "info@heizoel-deutschland.com";
 export const SITE_PHONE = "+49 30 5678 9000";
@@ -20,15 +20,6 @@ export const POSTAL_ADDRESS = {
   addressCountry: "DE",
 } as const;
 
-export const AGGREGATE_RATING = {
-  "@type": "AggregateRating",
-  ratingValue: "4.9",
-  bestRating: "5",
-  worstRating: "1",
-  ratingCount: "25000",
-  reviewCount: "25000",
-} as const;
-
 export function organization() {
   return {
     "@type": "Organization",
@@ -42,8 +33,7 @@ export function organization() {
     telephone: SITE_PHONE,
     vatID: "DE281404005",
     address: POSTAL_ADDRESS,
-    areaServed: { "@type": "Country", name: "Deutschland" },
-    aggregateRating: AGGREGATE_RATING,
+    areaServed: { "@type": "Country", name: "Österreich" },
   };
 }
 
@@ -53,7 +43,7 @@ export function website() {
     "@id": WEBSITE_ID,
     name: SITE_NAME,
     url: "/",
-    inLanguage: "de-DE",
+    inLanguage: "de-AT",
     publisher: { "@id": ORG_ID },
     potentialAction: {
       "@type": "SearchAction",
@@ -100,7 +90,7 @@ export function webPage(opts: {
     url: opts.url,
     name: opts.name,
     description: opts.description,
-    inLanguage: "de-DE",
+    inLanguage: "de-AT",
     isPartOf: { "@id": WEBSITE_ID },
     about: { "@id": ORG_ID },
   };
@@ -118,7 +108,7 @@ export function article(opts: {
     headline: opts.headline,
     description: opts.description,
     articleSection: opts.section,
-    inLanguage: "de-DE",
+    inLanguage: "de-AT",
     mainEntityOfPage: { "@id": `${opts.url}#webpage` },
     author: { "@id": ORG_ID },
     publisher: { "@id": ORG_ID },
@@ -133,7 +123,7 @@ export function service(opts: { name: string; description: string; url: string }
     url: opts.url,
     serviceType: "Heizöllieferung",
     provider: { "@id": ORG_ID },
-    areaServed: { "@type": "Country", name: "Deutschland" },
+    areaServed: { "@type": "Country", name: "Österreich" },
   };
 }
 

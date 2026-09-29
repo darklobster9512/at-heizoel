@@ -96,17 +96,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Heizöl bestellen & Heizölpreise vergleichen | Heizöl DE" },
+      { title: "Heizöl bestellen & Heizölpreise vergleichen | Heizöl Austria" },
       {
         name: "description",
         content:
-          "Heizölpreise aus über 300 Händlern vergleichen und Heizöl deutschlandweit günstig online bestellen. Tagesaktuelle Preise, sichere Lieferung, 4,9/5 Sterne.",
+          "Deutsches Heizöl für Österreich vergleichen und Heizöl österreichweit günstig online bestellen. Tagesaktuelle Preise und Lieferung nach Österreich.",
       },
       { name: "author", content: "Demovero GmbH" },
       { name: "publisher", content: "Demovero GmbH" },
-      { name: "language", content: "de-DE" },
-      { httpEquiv: "content-language", content: "de-DE" },
-      { name: "geo.region", content: "DE" },
+      { name: "language", content: "de-AT" },
+      { httpEquiv: "content-language", content: "de-AT" },
+      { name: "geo.region", content: "AT" },
       {
         name: "robots",
         content:
@@ -118,13 +118,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
       },
 
-      { property: "og:site_name", content: "Heizöl Deutschland" },
-      { property: "og:locale", content: "de_DE" },
-      { property: "og:title", content: "Heizöl bestellen & Heizölpreise vergleichen | Heizöl DE" },
+      { property: "og:site_name", content: "Heizöl Austria" },
+      { property: "og:locale", content: "de_AT" },
+      { property: "og:title", content: "Heizöl bestellen & Heizölpreise vergleichen | Heizöl Austria" },
       {
         property: "og:description",
         content:
-          "Heizölpreise aus über 300 Händlern vergleichen und Heizöl deutschlandweit günstig online bestellen. Tagesaktuelle Preise, sichere Lieferung, 4,9/5 Sterne.",
+          "Deutsches Heizöl für Österreich vergleichen und Heizöl österreichweit günstig online bestellen. Tagesaktuelle Preise und Lieferung nach Österreich.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -158,9 +158,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
 
 
-      { rel: "icon", href: "/favicon.svg?v=2", type: "image/svg+xml" },
-      { rel: "icon", href: "/favicon.png?v=2", type: "image/png", sizes: "64x64" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png?v=2", sizes: "180x180" },
+      { rel: "icon", href: "/favicon.svg?v=3", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon.png?v=3", type: "image/png", sizes: "64x64" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png?v=3", sizes: "180x180" },
     ],
   }),
   shellComponent: RootShell,
@@ -171,7 +171,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="de">
+    <html lang="de-AT">
       <head>
         <HeadContent />
       </head>
