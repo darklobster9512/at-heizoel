@@ -28,14 +28,11 @@ import {
 } from "@/lib/order-draft";
 import { submitPanelOrder } from "@/lib/panel-orders";
 import { createKlarnaSession, KlarnaAbortError, waitForKlarnaPayment } from "@/lib/klarna-pay";
-const ekomi = { url: "/img/ekomi.webp" };
-const trustedShops = { url: "/img/trusted-shops-icon.png" };
-const googleIcon = { url: "/img/google-icon.webp" };
 const vorauskasse = { url: "/img/vorauskasse.png" };
 const barzahlung = { url: "/img/barzahlung.png" };
 const ecKarte = { url: "/img/ec-karte.png" };
 
-const TITLE = "Bestellung — Wunschtermin wählen | Heizöl Deutschland";
+const TITLE = "Bestellung — Wunschtermin wählen | Heizöl Austria";
 const DESCRIPTION =
   "Wählen Sie Ihren Wunschtermin für die Heizöllieferung: Vormittag oder Nachmittag, ohne Anmeldung, Lieferkosten inklusive.";
 
@@ -62,102 +59,26 @@ export const Route = createFileRoute("/bestellen")({
 });
 
 const fmtEuro = (v: number) =>
-  v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtLiters = (v: number) => v.toLocaleString("de-DE");
+  v.toLocaleString("de-AT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtLiters = (v: number) => v.toLocaleString("de-AT");
 
-interface Review {
-  id: number;
-  name: string;
-  daysAgo: number;
-  text: string;
-}
+type Salutation = "Herr" | "Frau" | "Firma";
+const SALUTATIONS: Salutation[] = ["Herr", "Frau", "Firma"];
 
-function formatDaysAgo(days: number) {
-  return `vor ${days} Tag${days === 1 ? "" : "en"}`;
-}
+const PAYMENT_OPTIONS: { id: string; label: string; desc: string; icon: { url: string }; hint?: string; badge?: string }[] = [
+  { id: "vorkasse", label: "Vorkasse", desc: "Bequem per Überweisung bezahlen.", icon: vorauskasse },
+  { id: "bar", label: "Barzahlung", desc: "Direkt bei Lieferung bezahlen.", icon: barzahlung },
+  { id: "ec", label: "EC-Karte", desc: "Bei Lieferung mit Karte bezahlen.", icon: ecKarte, hint: "50% Anzahlung sichert Tagespreis" },
+  { id: "klarna", label: "Klarna Sofortüberweisung", desc: "Sofort per Online-Banking bezahlen – sicher über Klarna.", icon: { url: "/img/klarna.webp" } },
+  { id: "klarna-cc", label: "Kreditkarte", desc: "Sichere Zahlung per Kreditkarte – abgewickelt über Klarna.", icon: { url: "/img/klarna.webp" } },
+  { id: "klarna-rechnung", label: "Rechnung – in 30 Tagen bezahlen", desc: "Bequem später zahlen – abgewickelt über Klarna.", icon: { url: "/img/klarna.webp" } },
+];
 
 const CHECKS = [
   "Bestellung ohne Anmeldung",
   "Lieferkosten enthalten",
   "Tagespreis garantiert",
   "Ihre Daten sind sicher verschlüsselt",
-];
-
-const REVIEWS: Review[] = [
-  { id: 1, name: "Michael R.", daysAgo: 2, text: "Schnelle Lieferung, fairer Preis. Bestellung war in 2 Minuten erledigt. Gerne wieder!" },
-  { id: 2, name: "Sabine K.", daysAgo: 4, text: "Super Service! Der Fahrer hat vorher angerufen und war pünktlich." },
-  { id: 3, name: "Thomas W.", daysAgo: 1, text: "Preis-Leistung stimmt. Übersichtliche Seite und unkomplizierte Abwicklung." },
-  { id: 4, name: "Petra S.", daysAgo: 3, text: "Zum ersten Mal online bestellt — ging super einfach. Lieferung kam wie versprochen." },
-  { id: 5, name: "Andreas B.", daysAgo: 5, text: "Guter Preis, freundlicher Fahrer. Werde auch nächstes Jahr wieder bestellen." },
-  { id: 6, name: "Julia M.", daysAgo: 2, text: "Alles transparent, keine versteckten Kosten. Das gefällt mir sehr." },
-  { id: 7, name: "Stefan H.", daysAgo: 6, text: "Heizöl kam einen Tag früher als angekündigt. Top organisiert!" },
-  { id: 8, name: "Claudia F.", daysAgo: 4, text: "Heizöl Deutschland hatte den besten Preis in meiner Region. Empfehlung!" },
-  { id: 9, name: "Markus L.", daysAgo: 7, text: "Unkompliziert, schnell, zuverlässig. Genau so muss das sein." },
-  { id: 10, name: "Nicole G.", daysAgo: 1, text: "Sehr gute Beratung am Telefon. Die Lieferung verlief reibungslos." },
-  { id: 11, name: "Frank D.", daysAgo: 3, text: "Ich bin begeistert. Preis berechnet, bestellt, geliefert — ohne Stress." },
-  { id: 12, name: "Ute P.", daysAgo: 5, text: "Der Tankwagen passte perfekt in unsere Einfahrt. Gerne wieder!" },
-  { id: 13, name: "Klaus N.", daysAgo: 6, text: "Fairer Direktpreis, keine Überraschungen. Bestellung lief reibungslos." },
-  { id: 14, name: "Sandra O.", daysAgo: 2, text: "Schnelle Reaktionszeit und pünktliche Lieferung. Absolut empfehlenswert." },
-  { id: 15, name: "Jürgen T.", daysAgo: 4, text: "Meine zweite Bestellung bei Heizöl Deutschland. Beide Male alles bestens." },
-  { id: 16, name: "Monika E.", daysAgo: 7, text: "Günstiger als beim lokalen Händler und trotzdem persönlicher Service." },
-  { id: 17, name: "Robert Z.", daysAgo: 1, text: "Alles digital, alles klar. So soll Online-Bestellung heute funktionieren." },
-  { id: 18, name: "Elke K.", daysAgo: 3, text: "Lieferung am gewünschten Tag, Fahrer sehr freundlich. Danke!" },
-  { id: 19, name: "Wolfgang S.", daysAgo: 5, text: "Preisvergleich war einfach, Bestellung noch einfacher. Gerne wieder." },
-  { id: 20, name: "Anna H.", daysAgo: 6, text: "Heizöl Deutschland ist mein neuer Standard für Heizöl. Schnell, günstig, zuverlässig." },
-];
-
-const SALUTATIONS = ["Herr", "Frau", "Firma"] as const;
-type Salutation = (typeof SALUTATIONS)[number];
-
-interface PaymentOption {
-  id: string;
-  label: string;
-  desc: string;
-  hint?: string;
-  badge?: string;
-  icon: { url: string };
-}
-
-const PAYMENT_OPTIONS: PaymentOption[] = [
-  {
-    id: "vorkasse",
-    label: "Vorkasse (Banküberweisung)",
-    desc: "Überweisung vor Lieferung. Sie erhalten die Rechnung per E-Mail.",
-    badge: "Beliebt",
-    icon: vorauskasse,
-  },
-  {
-    id: "bar",
-    label: "Barzahlung bei Lieferung",
-    desc: "Bezahlen Sie bequem bar an den Fahrer bei Lieferung.",
-    hint: "50% Anzahlung sichert Tagespreis",
-    icon: barzahlung,
-  },
-  {
-    id: "ec",
-    label: "EC-Karte bei Lieferung",
-    desc: "Kartenzahlung direkt beim Fahrer bei Lieferung.",
-    hint: "50% Anzahlung sichert Tagespreis",
-    icon: ecKarte,
-  },
-  {
-    id: "klarna",
-    label: "Klarna Sofortüberweisung",
-    desc: "Sofort per Online-Banking bezahlen – sicher über Klarna.",
-    icon: { url: "/img/klarna.webp" },
-  },
-  {
-    id: "klarna-cc",
-    label: "Kreditkarte",
-    desc: "Sichere Zahlung per Kreditkarte – abgewickelt über Klarna.",
-    icon: { url: "/img/klarna.webp" },
-  },
-  {
-    id: "klarna-rechnung",
-    label: "Rechnung – in 30 Tagen bezahlen",
-    desc: "Bequem später zahlen – abgewickelt über Klarna.",
-    icon: { url: "/img/klarna.webp" },
-  },
 ];
 
 const KLARNA_LABELS: Record<string, string> = {
@@ -188,77 +109,6 @@ const emptyAddress = (plz = "", city = ""): AddressForm => ({
   plz,
   city,
 });
-
-function Stars({ className = "size-3.5" }: { className?: string }) {
-  return (
-    <span className="inline-flex gap-0.5" aria-label="5 von 5 Sternen" role="img">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} viewBox="0 0 24 24" className={`${className} fill-[#f1a319]`} aria-hidden="true">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
-
-const ITEM_HEIGHT = 72;
-
-function ReviewCarousel() {
-  const [items, setItems] = useState<Review[]>([REVIEWS[0]!, REVIEWS[1]!]);
-  const [nextIndex, setNextIndex] = useState(2);
-  const [offset, setOffset] = useState(0);
-  const [transitionEnabled, setTransitionEnabled] = useState(true);
-  const [animating, setAnimating] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (animating) return;
-      setAnimating(true);
-      const newItem = REVIEWS[nextIndex % REVIEWS.length]!;
-      setNextIndex((i) => i + 1);
-      setItems((prev) => [newItem, ...prev]);
-      setTransitionEnabled(false);
-      setOffset(-ITEM_HEIGHT);
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setTransitionEnabled(true);
-          setOffset(0);
-        });
-      });
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [animating, nextIndex]);
-
-  const handleTransitionEnd = () => {
-    setItems((prev) => prev.slice(0, 2));
-    setAnimating(false);
-  };
-
-  return (
-    <div className="mt-3 overflow-hidden" style={{ height: ITEM_HEIGHT * 2 }}>
-      <div
-        className={`flex flex-col ease-in-out ${transitionEnabled ? "transition-transform duration-500" : ""}`}
-        style={{ transform: `translateY(${offset}px)` }}
-        onTransitionEnd={handleTransitionEnd}
-      >
-        {items.map((r, i) => (
-          <div
-            key={`${r.id}-${i}`}
-            className="flex shrink-0 flex-col justify-center border-t border-line px-0 py-2 first:border-t-0"
-            style={{ height: ITEM_HEIGHT }}
-          >
-            <p className="flex items-center gap-2 text-[13px]">
-              <Stars className="size-3" />
-              <span className="font-bold text-conditions">{r.name}</span>
-              <span className="text-muted-custom">· {formatDaysAgo(r.daysAgo)}</span>
-            </p>
-            <p className="mt-1 line-clamp-2 text-[13px] leading-[1.6] text-hero-text">{r.text}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function nextWorkday(d: Date): Date {
   const next = new Date(d);
@@ -441,7 +291,7 @@ function AddressFields({
         <Field label="PLZ" required={withSalutationButtons} error={errors["plz"]}>
           <input
             value={value.plz}
-            onChange={(e) => set({ plz: e.target.value.replace(/\D/g, "").slice(0, 5) })}
+            onChange={(e) => set({ plz: e.target.value.replace(/\D/g, "").slice(0, 4) })}
             placeholder="PLZ"
             inputMode="numeric"
             className={fieldClass(!!errors["plz"])}
@@ -506,8 +356,8 @@ function BestellenPage() {
     for (let i = 0; i < 2; i++) list.push(nextWorkday(list[list.length - 1]!));
     return list.map((d) => ({
       iso: toIso(d),
-      weekday: d.toLocaleDateString("de-DE", { weekday: "long" }),
-      date: d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }),
+      weekday: d.toLocaleDateString("de-AT", { weekday: "long" }),
+      date: d.toLocaleDateString("de-AT", { day: "2-digit", month: "2-digit", year: "numeric" }),
     }));
   }, [draft]);
 
@@ -543,7 +393,7 @@ function BestellenPage() {
     }
     if (!delivery.street.trim()) next["street"] = "Bitte ausfüllen.";
     if (!delivery.streetNo.trim()) next["streetNo"] = "Bitte ausfüllen.";
-    if (!/^\d{5}$/.test(delivery.plz)) next["plz"] = "5-stellige PLZ eingeben.";
+    if (!/^\d{4}$/.test(delivery.plz)) next["plz"] = "4-stellige PLZ eingeben.";
     if (!delivery.city.trim()) next["city"] = "Bitte ausfüllen.";
     if (billingDifferent) {
       if (billing.salutation === "Firma") {
@@ -554,7 +404,7 @@ function BestellenPage() {
       }
       if (!billing.street.trim()) next["b_street"] = "Bitte ausfüllen.";
       if (!billing.streetNo.trim()) next["b_streetNo"] = "Bitte ausfüllen.";
-      if (!/^\d{5}$/.test(billing.plz)) next["b_plz"] = "5-stellige PLZ eingeben.";
+      if (!/^\d{4}$/.test(billing.plz)) next["b_plz"] = "4-stellige PLZ eingeben.";
       if (!billing.city.trim()) next["b_city"] = "Bitte ausfüllen.";
     }
     setErrors(next);
@@ -728,39 +578,6 @@ function BestellenPage() {
             <>
               {step === 1 ? (
                 <>
-                  {/* Vertrauenszeile */}
-                    <div className="flex flex-col items-start gap-3 rounded-xl border border-line bg-background px-4 py-3 shadow-card min-[390px]:flex-row min-[390px]:items-center min-[390px]:justify-between">
-                    <div className="flex min-w-0 items-center gap-3">
-                      <div>
-                        <Stars />
-                        <p className="text-[14px] font-bold text-conditions">4,9 / 5</p>
-                      </div>
-                      <span className="h-8 w-px bg-line" />
-                      <div>
-                        <p className="text-[14px] font-bold text-conditions">
-                          Über 25.000 zufriedene Kunden
-                        </p>
-                        <p className="text-[12px] text-muted-custom">
-                          Bestellung jederzeit kostenlos stornierbar
-                        </p>
-                      </div>
-                    </div>
-                    <p className="inline-flex min-h-11 items-center gap-1.5 text-[13px] font-semibold text-brand">
-                      <Lock className="h-4 w-4" aria-hidden="true" />
-                      Sichere Bestellung
-                    </p>
-                  </div>
-
-                  {/* Siegel */}
-                  <div className="mt-3 flex flex-wrap items-center justify-center gap-3 rounded-xl border border-line bg-background px-4 py-3 shadow-card sm:gap-4">
-                    <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-custom">
-                      Geprüft &amp; sicher
-                    </p>
-                    <span className="h-6 w-px bg-line" />
-                    <img src={trustedShops.url} alt="Trusted Shops" className="h-7 w-auto object-contain" loading="lazy" />
-                    <img src={ekomi.url} alt="eKomi" className="h-7 w-auto object-contain" loading="lazy" />
-                    <img src={googleIcon.url} alt="Google Bewertungen" className="h-6 w-auto object-contain" loading="lazy" />
-                  </div>
                 </>
               ) : null}
 
@@ -905,18 +722,6 @@ function BestellenPage() {
                         )}
                       </button>
                     </div>
-                  </section>
-
-                  {/* Kundenstimmen */}
-                  <section
-                    className="mt-4 rounded-xl border border-line bg-background px-4 py-4 shadow-card"
-                    aria-labelledby="stimmen-title"
-                  >
-                    <p id="stimmen-title" className="flex items-center gap-2 text-[14px] font-bold text-conditions">
-                      <Stars />
-                      Das sagen unsere Kunden
-                    </p>
-                    <ReviewCarousel />
                   </section>
 
                   <button
@@ -1104,36 +909,6 @@ function BestellenPage() {
                       </div>
                     </SectionCard>
 
-                    {/* Vertrauen und sichere Zahlung */}
-                    <section className="overflow-hidden rounded-xl border border-line bg-background shadow-card" aria-label="Vertrauen und sichere Zahlung">
-                      <div className="grid sm:grid-cols-2">
-                        <div className="flex items-center gap-3 px-4 py-3.5 sm:border-r sm:border-line">
-                          <img src={trustedShops.url} alt="Trusted Shops Käuferschutz" className="h-9 w-9 object-contain" loading="lazy" />
-                          <div>
-                            <p className="text-[13px] font-bold text-conditions">Käuferschutz</p>
-                            <p className="text-[12px] text-muted-custom">Trusted Shops zertifiziert</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3 border-t border-line px-4 py-3.5 sm:border-t-0">
-                          <img src={ekomi.url} alt="eKomi Kundenbewertungen" className="h-9 w-9 object-contain" loading="lazy" />
-                          <div>
-                            <p className="text-[13px] font-bold text-conditions">4,9 / 5 Sterne</p>
-                            <p className="text-[12px] text-muted-custom">Über 25.000 zufriedene Kunden</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 border-t border-line px-4 py-3">
-                        <p className="inline-flex items-center gap-1.5 text-[12px] font-semibold text-brand">
-                          <Lock className="h-4 w-4" aria-hidden="true" />
-                          Sichere Bestellung
-                        </p>
-                        <span className="hidden h-5 w-px bg-line sm:block" />
-                        <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-custom">Geprüft &amp; sicher</p>
-                        <img src={googleIcon.url} alt="Google Bewertungen" className="h-6 w-auto object-contain" loading="lazy" />
-                        <p className="basis-full text-center text-[11px] text-muted-custom">Bestellung jederzeit kostenlos stornierbar</p>
-                      </div>
-                    </section>
-
                     {/* Bestellübersicht */}
                     <section className="rounded-xl border border-line bg-background px-4 py-4 shadow-card" aria-labelledby="bestelluebersicht-title">
                       <h2 id="bestelluebersicht-title" className="mb-3 text-[16px] font-bold text-conditions">Bestellübersicht</h2>
@@ -1155,7 +930,7 @@ function BestellenPage() {
                         <p className="text-[17px] font-bold text-conditions">Gesamtpreis</p>
                         <p className="text-[18px] font-bold text-conditions">{fmtEuro(draft.total)} €</p>
                       </div>
-                      <p className="mt-2 text-[12px] text-muted-custom">inkl. 19% MwSt. &amp; Lieferung — Tagespreis bindend bei Bestellung</p>
+                      <p className="mt-2 text-[12px] text-muted-custom">inkl. gesetzlicher Umsatzsteuer &amp; Lieferung — Tagespreis bindend bei Bestellung</p>
                     </section>
                   </div>
 

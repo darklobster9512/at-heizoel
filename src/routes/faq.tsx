@@ -32,7 +32,7 @@ const FAQ_LD = [
   },
   {
     q: "Wie lange dauert die Heizöllieferung?",
-    a: "Die Lieferung erfolgt deutschlandweit in der Regel innerhalb von etwa 7 Werktagen. Den gewünschten Liefertag und Vormittag oder Nachmittag legen Sie bei der Bestellung fest.",
+    a: "Die Lieferung erfolgt österreichweit in der Regel innerhalb von etwa 7 Werktagen. Den gewünschten Liefertag und Vormittag oder Nachmittag legen Sie bei der Bestellung fest.",
   },
   {
     q: "Was ist der Unterschied zwischen Standard-Heizöl und Premium-Heizöl?",
@@ -40,7 +40,7 @@ const FAQ_LD = [
   },
   {
     q: "Welche Zahlungsarten sind möglich?",
-    a: "Sie zahlen per Vorkasse, in bar bei Lieferung, mit EC-Karte bei Lieferung oder als Bestandskunde auf Rechnung. Alle Zahlungsarten sind ohne Aufpreis.",
+    a: "Sie zahlen per Vorkasse, in bar bei Lieferung oder mit EC-Karte bei Lieferung. Die verfügbaren Zahlungsarten sehen Sie vor dem Bestellabschluss.",
   },
   {
     q: "Ist die Lieferung im Heizölpreis enthalten?",
@@ -117,8 +117,7 @@ const SECTIONS: FaqSection[] = [
         a: (
           <>
             <P>
-              Die Qualität aller in Deutschland in den Handel gebrachten Heizölsorten ist streng in
-              der DIN 51603-1 geregelt. Bei Heizöl Deutschland erhalten Sie ausschließlich Heizöle nach DIN
+              Das angebotene deutsche Heizöl entspricht der DIN 51603-1. Bei Heizöl Austria erhalten Sie ausschließlich Heizöle nach DIN
               51603-1. Lediglich für Bio-Heizöl gibt es eine eigene Norm.
             </P>
             <P>
@@ -152,7 +151,7 @@ const SECTIONS: FaqSection[] = [
         a: (
           <>
             <P>
-              Bei Heizöl Deutschland erhalten Sie ausschließlich Marken-Heizöl der bekannten großen
+              Bei Heizöl Austria erhalten Sie ausschließlich Marken-Heizöl der bekannten großen
               Ölgesellschaften wie Aral, Esso, OMV, Shell oder Total.
             </P>
             <P>
@@ -182,7 +181,7 @@ const SECTIONS: FaqSection[] = [
     icon: Calculator,
     items: [
       {
-        q: "Wie funktioniert eine Heizölbestellung bei Heizöl Deutschland?",
+        q: "Wie funktioniert eine Heizölbestellung bei Heizöl Austria?",
         a: (
           <>
             <P>
@@ -236,7 +235,7 @@ const SECTIONS: FaqSection[] = [
         q: "Ihr Firmensitz ist weit von unserem Wohnort entfernt. Wie funktioniert die Lieferung?",
         a: (
           <P>
-            Heizöl Deutschland arbeitet mit über 500 regionalen Heizölhändlern in ganz Deutschland zusammen.
+            Heizöl Austria arbeitet mit über 500 regionalen Heizölhändlern in ganz Österreich zusammen.
             Geliefert wird immer von einem Händler aus Ihrer Region — dadurch bleiben Lieferwege kurz
             und Preise günstig.
           </P>
@@ -314,11 +313,11 @@ const SECTIONS: FaqSection[] = [
         ),
       },
       {
-        q: "Ist eine Belieferung in Österreich oder der Schweiz möglich?",
+        q: "Ist eine Belieferung in Österreich möglich?",
         a: (
           <P>
-            Nein. Wir liefern ausschließlich innerhalb Deutschlands an Adressen mit deutscher
-            Postleitzahl.
+            Ja. Geben Sie Ihre vierstellige österreichische Postleitzahl ein, um ein
+            Angebot für Ihre Lieferadresse zu erhalten.
           </P>
         ),
       },
@@ -374,7 +373,7 @@ const SECTIONS: FaqSection[] = [
         q: "Warum verlangt der gleiche Händler am Telefon mehr?",
         a: (
           <P>
-            Telefonische Bestellungen sind für Händler deutlich aufwendiger. Über Heizöl Deutschland erhält der
+            Telefonische Bestellungen sind für Händler deutlich aufwendiger. Über Heizöl Austria erhält der
             Händler die Bestellung vollständig digital und kalkuliert deshalb mit geringerer Marge.
           </P>
         ),

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { CheckSquare } from "lucide-react";
 
-import { RatingBadge } from "./rating-badge";
 
 export interface PriceSearchValues {
   plz: string;
@@ -36,7 +35,8 @@ export function PriceSearchLoading({ values }: { values: PriceSearchValues }) {
     ];
 
     return () => timers.forEach((timer) => window.clearTimeout(timer));
-  }, [navigate, values]);
+    // This screen is mounted for one search; re-renders must not restart the countdown.
+  }, []);
 
   return (
     <main
@@ -53,7 +53,7 @@ export function PriceSearchLoading({ values }: { values: PriceSearchValues }) {
         <p className="mt-2 text-[13px] text-muted-custom">
           für PLZ <strong className="font-semibold text-hero-text">{values.plz}</strong>
           {" · "}
-          {values.menge.toLocaleString("de-DE")} Liter
+          {values.menge.toLocaleString("de-AT")} Liter
         </p>
 
         <ul className="mt-6 space-y-3 text-center">
@@ -77,9 +77,7 @@ export function PriceSearchLoading({ values }: { values: PriceSearchValues }) {
             showTrust ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           }`}
         >
-          <div className="flex justify-center">
-            <RatingBadge compact cycle={false} />
-          </div>
+          <p className="text-sm text-muted-custom">Deutsches Heizöl für Österreich</p>
         </div>
       </div>
     </main>

@@ -120,7 +120,7 @@ const SECTIONS: WissenSection[] = [
     points: [
       {
         heading: "Heizöl EL",
-        text: "Extra leichtflüssiges Heizöl (kurz: Heizöl EL) — die Standard-Heizölsorte in Deutschland nach DIN 51603-1.",
+        text: "Extra leichtflüssiges Heizöl (kurz: Heizöl EL) — die Standard-Heizölsorte in Österreich nach DIN 51603-1.",
       },
       {
         heading: "Schwefelarm",
@@ -140,7 +140,7 @@ const SECTIONS: WissenSection[] = [
       },
       {
         heading: "Mindestbestellmenge",
-        text: "Die kleinste Menge Heizöl, die pro Lieferung bestellt werden kann. Bei Heizöl Deutschland liegt die Mindestbestellmenge bei 1.500 Litern.",
+        text: "Die kleinste Menge Heizöl, die pro Lieferung bestellt werden kann. Bei Heizöl Austria liegt die Mindestbestellmenge bei 1.500 Litern.",
       },
       {
         heading: "Sammelbestellung",

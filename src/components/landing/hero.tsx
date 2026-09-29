@@ -1,14 +1,10 @@
-const ntv = { url: "/img/ntv-gesamtsieger-2025.png" };
-const bild = { url: "/img/bild-empfehlung-2026.png" };
-const welt = { url: "/img/die-welt-service-champion-2025.png" };
-const dtgv = { url: "/img/dtgv-testsieger.png" };
 const guarantee = { url: "/img/guarantee.png" };
 import { OfferCard } from "./offer-card";
 import type { PriceSearchValues } from "./price-search-loading";
 
 const CHECKS = [
-  { prefix: "Bis zu ", bold: "20% günstiger", suffix: " als der Marktdurchschnitt" },
-  { prefix: "Über ", bold: "500 zertifizierte Händler", suffix: " deutschlandweit" },
+  { prefix: "", bold: "Deutsches Heizöl", suffix: " zum günstigen Preis in Österreich" },
+  { prefix: "", bold: "Preis für Ihre PLZ", suffix: " direkt vergleichen" },
   { prefix: "", bold: "Festpreis-Garantie", suffix: " — auch bei steigenden Ölpreisen" },
 ];
 
@@ -28,46 +24,13 @@ function Check() {
 }
 
 export function Hero({ onSearch }: { onSearch: (values: PriceSearchValues) => void }) {
-  const trustBadges = (
-    <div className="flex flex-nowrap items-center justify-center gap-3 pb-1 md:justify-start">
-      <img
-        src={ntv.url}
-        alt="ntv Gesamtsieger Heizöl-Preisvergleich 2025"
-        width={124}
-        height={124}
-        className="h-16 w-auto max-w-[96px] shrink-0 object-contain md:h-20 md:max-w-[170px]"
-      />
-      <img
-        src={bild.url}
-        alt="Bild Höchste Empfehlung 2026"
-        width={330}
-        height={227}
-        className="h-16 w-auto max-w-[96px] shrink-0 object-contain md:h-20 md:max-w-[170px]"
-      />
-      <img
-        src={welt.url}
-        alt="Die Welt Service-Champion 2025"
-        width={124}
-        height={154}
-        className="h-16 w-auto max-w-[96px] shrink-0 object-contain md:h-20 md:max-w-[170px]"
-      />
-      <img
-        src={dtgv.url}
-        alt="DtGV Testsieger Heizölportale"
-        width={330}
-        height={161}
-        className="hidden h-16 w-auto max-w-[140px] shrink-0 object-contain md:block md:h-20 md:max-w-[170px]"
-      />
-    </div>
-  );
-
   return (
     <section id="top" className="relative bg-surface">
       <div className="relative mx-auto grid max-w-6xl items-start gap-6 px-5 pb-[53px] pt-[29px] md:gap-10 md:py-12 lg:grid-cols-[1fr_510px] lg:py-14">
         <div>
           <div className="mb-3 md:mb-4">
             <span className="inline-flex items-center rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-white md:text-sm">
-              Nr. 1 Heizöl-Preisvergleich in Deutschland
+              Deutsches Heizöl für Österreich
             </span>
           </div>
 
@@ -87,12 +50,8 @@ export function Hero({ onSearch }: { onSearch: (values: PriceSearchValues) => vo
           </div>
 
           <p className="mt-5 max-w-[55ch] text-[15px] leading-snug text-hero-text md:mt-6 md:text-base">
-            Heizölpreise heute ab{" "}
-            <strong className="font-semibold text-ink">128,78 €/100L</strong> —{" "}
-            <strong className="font-semibold text-ink">über 25.000 Kunden</strong>{" "}
-            sparen{" "}
-            <strong className="font-semibold text-ink">Ø €247 pro Bestellung</strong>
-            , direkt vom Händler, deutschlandweit.
+            Deutsches Heizöl für Lieferadressen in Österreich. Geben Sie Ihre vierstellige PLZ
+            und Liefermenge ein, um Ihren Preis direkt zu vergleichen.
           </p>
 
           <ul className="mt-5 space-y-3 md:mt-6 md:space-y-4">
@@ -108,7 +67,6 @@ export function Hero({ onSearch }: { onSearch: (values: PriceSearchValues) => vo
             ))}
           </ul>
 
-          <div className="mt-10 hidden md:block">{trustBadges}</div>
         </div>
 
         <div id="rechner" className="relative scroll-mt-24">
@@ -119,7 +77,7 @@ export function Hero({ onSearch }: { onSearch: (values: PriceSearchValues) => vo
             height={1058}
             className="pointer-events-none absolute -right-2 -top-8 z-10 hidden size-[86px] object-contain drop-shadow-sm md:block"
           />
-          <OfferCard mobileTrust={trustBadges} onSearch={onSearch} />
+          <OfferCard onSearch={onSearch} />
         </div>
       </div>
     </section>

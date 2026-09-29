@@ -28,7 +28,7 @@ const TITLE = "Heizölpreis berechnen — Heizölrechner für Ihre PLZ";
 const URL = "/preisrechner";
 
 export const Route = createFileRoute("/preisrechner/")({
-  validateSearch: z.object({ plz: z.string().regex(/^\d{5}$/).optional() }),
+  validateSearch: z.object({ plz: z.coerce.string().regex(/^\d{4}$/).optional() }).catch({}),
   head: () => ({
     meta: pageMeta({ title: TITLE, description: DESCRIPTION, url: URL }),
     links: [{ rel: "canonical", href: URL }],
@@ -71,7 +71,7 @@ const ADVANTAGES = [
   {
     icon: Clock,
     title: "Lieferung in 7 Werktagen",
-    text: "Deutschlandweit zum Wunschtermin",
+    text: "Österreichweit zum Wunschtermin",
   },
   {
     icon: ShieldCheck,
@@ -82,22 +82,11 @@ const ADVANTAGES = [
 
 
 const CITIES: Array<{ city: string; plz: string }> = [
-  { city: "Dresden", plz: "01067" },
-  { city: "Leipzig", plz: "04109" },
-  { city: "Erfurt", plz: "99084" },
-  { city: "München", plz: "80331" },
-  { city: "Nürnberg", plz: "90402" },
-  { city: "Hannover", plz: "30159" },
-  { city: "Kiel", plz: "24103" },
-  { city: "Köln", plz: "50667" },
-  { city: "Stuttgart", plz: "70173" },
-  { city: "Rostock", plz: "18055" },
-  { city: "Magdeburg", plz: "39104" },
-  { city: "Potsdam", plz: "14467" },
-  { city: "Karlsruhe", plz: "76133" },
-  { city: "Bremen", plz: "28195" },
-  { city: "Kassel", plz: "34117" },
-  { city: "Augsburg", plz: "86150" },
+  { city: "Wien", plz: "1010" }, { city: "Graz", plz: "8010" },
+  { city: "Linz", plz: "4020" }, { city: "Salzburg", plz: "5020" },
+  { city: "Innsbruck", plz: "6020" }, { city: "Klagenfurt", plz: "9020" },
+  { city: "St. Pölten", plz: "3100" }, { city: "Bregenz", plz: "6900" },
+  { city: "Eisenstadt", plz: "7000" },
 ];
 
 const TIME_LABELS = [
@@ -128,15 +117,15 @@ function randomOrder(): LiveOrder {
 }
 
 const INITIAL_ORDER: LiveOrder = {
-  city: "Dresden",
-  plz: "01067",
+  city: "Wien",
+  plz: "1010",
   liters: 1800,
   pricePer100L: 128.78,
   timeLabel: "vor 1 Min.",
 };
 
 const fmtPrice = (v: number) =>
-  v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  v.toLocaleString("de-AT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 function LiveOrders() {
   const [order, setOrder] = useState<LiveOrder>(INITIAL_ORDER);
@@ -195,7 +184,7 @@ function LiveOrders() {
           <Logo className="h-auto w-[92px] shrink-0 text-brand-logo" />
         </div>
         <p className="mt-1 text-sm text-ink">
-          {order.liters.toLocaleString("de-DE")} Liter —{" "}
+          {order.liters.toLocaleString("de-AT")} Liter —{" "}
           <span className="font-bold">
             {fmtPrice(order.pricePer100L)} €/100L
           </span>
@@ -259,7 +248,7 @@ function PreisrechnerPage() {
             <div className="mb-8 text-center">
               <div className="mb-3 md:mb-4">
                 <span className="inline-flex items-center rounded-full bg-brand px-3 py-1.5 text-xs font-semibold text-white md:text-sm">
-                  Nr. 1 Heizöl-Preisvergleich in Deutschland
+                  Deutsches Heizöl für Österreich
                 </span>
               </div>
 
@@ -269,13 +258,8 @@ function PreisrechnerPage() {
               </h1>
 
               <p className="mx-auto mt-5 text-[15px] leading-snug text-hero-text md:mt-6 md:whitespace-nowrap md:text-base">
-                Heizölpreise heute ab{" "}
-                <strong className="font-semibold text-ink">128,78 €/100L</strong>{" "}
-                —{" "}
-                <strong className="font-semibold text-ink">über 25.000 Kunden</strong>{" "}
-                sparen{" "}
-                <strong className="font-semibold text-ink">Ø €247 pro Bestellung</strong>
-                , direkt vom Händler, deutschlandweit.
+                Deutsches Heizöl für Lieferadressen in Österreich. Berechnen Sie Ihren Preis
+                anhand Ihrer vierstelligen Postleitzahl und gewünschten Liefermenge.
               </p>
             </div>
 
@@ -306,7 +290,7 @@ function PreisrechnerPage() {
                 id="why-brand-title"
                 className="text-center text-lg font-semibold leading-snug text-conditions md:text-xl"
               >
-                Warum bei Heizöl Deutschland bestellen?
+                Warum bei Heizöl Austria bestellen?
               </h2>
               <div className="mt-6 grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                 {ADVANTAGES.map((a, i) => {
@@ -346,12 +330,12 @@ function PreisrechnerPage() {
             <div className="mx-auto mt-8 max-w-[920px] space-y-8 text-[16px] leading-[1.65] text-conditions">
               <div>
                 <h3 className="text-lg font-semibold text-ink">
-                  Heizölpreise heute — aktueller Tagespreis ab 128,78 €/100L
+                  Heizölpreise für Ihre österreichische PLZ
                 </h3>
                 <p className="mt-2">
-                  Der Heizölpreis heute liegt bei Heizöl Deutschland ab{" "}
-                  <strong>128,78 €/100L</strong> (Stand: 13.09.2026, 12:15 Uhr).
-                  Heizölpreise werden in Deutschland traditionell pro 100 Liter
+                  Der Heizölpreis heute liegt bei Heizöl Austria ab{" "}
+                  <strong>128,78 €/100L</strong> (Richtpreis).
+                  Heizölpreise werden in Österreich traditionell pro 100 Liter
                   angegeben — das ist die übliche Bestellmenge und macht den
                   Preisvergleich zwischen Anbietern transparent. Bei einer
                   Standard-Bestellung von 3.000 Litern entspricht das einem
@@ -367,18 +351,10 @@ function PreisrechnerPage() {
                   Heizöl kaufen — direkt vom Händler ab 128,78 €/100L
                 </h3>
                 <p className="mt-2">
-                  Wer Heizöl kaufen möchte, profitiert bei Heizöl Deutschland von Direktpreisen
-                  ohne Zwischenhändler-Aufschläge. Über{" "}
-                  <strong>500 zertifizierte Partnerhändler</strong> liefern
-                  deutschlandweit zu garantierten Festpreisen. Im Vergleich zum
-                  Marktdurchschnitt sparen Kunden beim Heizöl bestellen
-                  durchschnittlich <strong>€247</strong> pro Bestellung — das
-                  entspricht bis zu <strong>15% Ersparnis</strong> pro €/100L.
-                  Der gesamte Bestellprozess dauert weniger als 2 Minuten: PLZ
-                  und Liefermenge eingeben, Standard- oder Premium-Heizöl wählen,
-                  Zahlungsart bestimmen — fertig. Es gibt keine versteckten
-                  Kosten, alle Preise sind Endpreise inkl. 19% MwSt. und
-                  kostenloser Lieferung in 7 Werktagen.
+                  Heizöl Austria bietet deutsches Heizöl für Lieferadressen in Österreich an.
+                  Deutsches Heizöl kann hier günstiger sein. Vergleichen Sie den konkreten Preis
+                  für Ihre vierstellige PLZ und Liefermenge, bevor Sie bestellen. Der Gesamtpreis
+                  und die verfügbaren Zahlungsarten werden vor dem Abschluss angezeigt.
                 </p>
               </div>
 
@@ -389,13 +365,12 @@ function PreisrechnerPage() {
                 <p className="mt-2">
                   Der Heizölpreis pro Liter liegt heute bei ca.{" "}
                   <strong>1,29 €/Liter</strong> (entspricht 128,78 €/100L). In der
-                  Praxis wird Heizöl bei Heizöl Deutschland ab einer Mindestbestellmenge von{" "}
+                  Praxis wird Heizöl bei Heizöl Austria ab einer Mindestbestellmenge von{" "}
                   <strong>1.500 Litern</strong> verkauft — deshalb ist die Angabe
-                  €/100L der Standard im deutschen Heizöl-Markt. Wer wissen
+                  €/100L eine gängige Preisangabe. Wer wissen
                   möchte, wie der Heizölpreis pro Liter kalkuliert wird, sollte
-                  folgende Komponenten berücksichtigen: Rohölpreis (ca. 50%),
-                  Mineralölsteuer + CO₂-Abgabe + MwSt. (zusammen ~38%), Logistik
-                  & Lagerung (~7%), Händlermarge (~5%). Bei steigenden
+                  folgende Komponenten berücksichtigen: Rohölpreis, Steuern und Abgaben,
+                  Logistik und Händlermarge. Bei steigenden
                   Rohölpreisen oder fallenden Eurokursen verteuert sich der
                   Heizölpreis pro Liter entsprechend.
                 </p>
@@ -406,7 +381,7 @@ function PreisrechnerPage() {
                   Heizöl bestellen — in 3 Schritten zum besten Preis
                 </h3>
                 <p className="mt-2">
-                  Beim Heizöl online bestellen mit Heizöl Deutschland durchlaufen Sie 3
+                  Beim Heizöl online bestellen mit Heizöl Austria durchlaufen Sie 3
                   einfache Schritte: (1){" "}
                   <strong>PLZ und Liefermenge eingeben</strong> — sofort sehen
                   Sie die Heizölpreise für Ihre Region in €/100L. (2){" "}

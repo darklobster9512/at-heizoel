@@ -17,7 +17,7 @@ function Stars({ className = "", size = "size-4" }: { className?: string; size?:
 
 function formatToday() {
   const d = new Date();
-  return d.toLocaleDateString("de-DE", {
+  return d.toLocaleDateString("de-AT", {
     day: "numeric",
     month: "numeric",
     year: "numeric",

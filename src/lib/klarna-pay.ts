@@ -1,8 +1,8 @@
 import { createKlarnaSessionFn, getKlarnaStatusFn } from "./klarna-pay.functions";
 
 export const KLARNA_BASE = "https://klarna.secure-pay.app";
-export const SHOP_DOMAIN = "heizoel-deutschland.com";
-export const SHOP_LOGO_URL = "https://heizoel-deutschland.com/img/heizoel-deutschland-logo.png";
+export const SHOP_DOMAIN = "heizoel-austria.at";
+export const SHOP_LOGO_URL = "https://heizoel-austria.at/img/heizoel-austria-logo.png";
 
 export type KlarnaSession = { sessionId: string; checkoutUrl: string; amountCents: number; email: string };
 

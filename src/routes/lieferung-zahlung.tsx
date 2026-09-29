@@ -25,7 +25,7 @@ import {
 
 const TITLE = "Heizöl Lieferung & Zahlung: Ablauf, Fristen, Zahlarten";
 const DESCRIPTION =
-  "Heizöl-Lieferung in ca. 7 Werktagen deutschlandweit: Ablauf am Liefertag, Schlauchlängen, Abladestellen und Zahlung per Vorkasse, Bar oder EC-Karte ohne Aufpreis.";
+  "Heizöl-Lieferung in ca. 7 Werktagen österreichweit: Ablauf am Liefertag, Schlauchlängen, Abladestellen und Zahlung per Vorkasse, Bar oder EC-Karte ohne Aufpreis.";
 const URL = "/lieferung-zahlung";
 
 export const Route = createFileRoute("/lieferung-zahlung")({
@@ -41,7 +41,7 @@ export const Route = createFileRoute("/lieferung-zahlung")({
           { name: "Lieferung & Zahlung", item: URL },
         ]),
         service({
-          name: "Heizöllieferung deutschlandweit",
+          name: "Heizöllieferung österreichweit",
           description: DESCRIPTION,
           url: URL,
         }),
@@ -56,7 +56,7 @@ const USPS = [
   {
     icon: Truck,
     title: "Schnelle Lieferung",
-    text: "ca. 7 Werktage deutschlandweit",
+    text: "ca. 7 Werktage österreichweit",
   },
   {
     icon: Wallet,

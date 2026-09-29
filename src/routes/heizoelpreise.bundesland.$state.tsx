@@ -36,7 +36,7 @@ export const Route = createFileRoute("/heizoelpreise/bundesland/$state")({
       return { meta: [{ title: "Bundesland nicht gefunden" }, { name: "robots", content: "noindex, nofollow" },
       { name: "googlebot", content: "noindex, nofollow" }] };
     }
-    const title = `Heizölpreise ${state.name} – ab ${euro(PRICE_PER_100)} €/100 L | Heizöl Deutschland`;
+    const title = `Heizölpreise ${state.name} – ab ${euro(PRICE_PER_100)} €/100 L | Heizöl Austria`;
     const description = `Aktueller Heizölpreis in ${state.name}: ab ${euro(PRICE_PER_100)} € pro 100 Liter, ${num(SAMPLE_LITERS)} Liter ca. ${euro(sampleTotal())} €. Kostenlose Lieferung in ${DELIVERY_DAYS} Werktagen.`;
     const url = `/heizoelpreise/bundesland/${params.state}`;
     return {
@@ -125,9 +125,9 @@ function StatePage() {
 
         <CopyBlocks blocks={stateBlocks(state)} />
 
-        <CityGrid cities={big} title={`Große Städte in ${state.name}`} />
+        <CityGrid cities={big} title={`Orte in ${state.name}`} />
 
-        <CityLinkList cities={all} title={`Alle Orte in ${state.name} mit Heizöl-Lieferung`} />
+        <CityLinkList cities={all} title={`Alle erfassten Orte in ${state.name}`} />
 
         <RegionFaq items={stateFaq(state)} title={`Häufige Fragen zu Heizöl in ${state.name}`} />
 

@@ -53,10 +53,10 @@ export function OfferCard({
             type="text"
             inputMode="numeric"
             autoComplete="postal-code"
-            maxLength={5}
-            placeholder="z. B. 10115"
+            maxLength={4}
+            placeholder="z. B. 1010"
             value={plz}
-            onChange={(e) => setPlz(e.target.value.replace(/\D/g, "").slice(0, 5))}
+            onChange={(e) => setPlz(e.target.value.replace(/\D/g, "").slice(0, 4))}
             className={`${fieldClass} tabular`}
           />
         </div>
@@ -120,7 +120,7 @@ export function OfferCard({
 
       <button
         type="button"
-        disabled={!/^\d{5}$/.test(plz) || quantity < 1500 || quantity > 32000}
+        disabled={!/^\d{4}$/.test(plz) || quantity < 1500 || quantity > 32000}
         onClick={() =>
           onSearch({
             plz,

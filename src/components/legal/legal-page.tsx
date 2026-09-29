@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/landing/site-header";
 import { SiteFooter } from "@/components/landing/sections";
 
 export const COMPANY = {
-  shop: "heizoel-deutschland.com",
+  shop: "heizoel-austria.at",
   company: "Demovero GmbH",
   street: "Kurfürstendamm 97–98",
   city: "10709 Berlin",

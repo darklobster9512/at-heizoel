@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   ThumbsUp,
   Truck,
-  Users,
   X,
 } from "lucide-react";
 
@@ -22,7 +21,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-const ekomi = { url: "/img/ekomi.webp" };
 const vorauskasse = { url: "/img/vorauskasse.png" };
 const barzahlung = { url: "/img/barzahlung.png" };
 const ecKarte = { url: "/img/ec-karte.png" };
@@ -32,16 +30,16 @@ import { saveOrderDraft } from "@/lib/order-draft";
 import { trackPixelEvent } from "@/lib/meta-pixel";
 
 
-const TITLE = "Ihr persönliches Heizölangebot | Heizöl Deutschland";
+const TITLE = "Ihr persönliches Heizölangebot | Heizöl Austria";
 const DESCRIPTION =
-  "Ihr persönliches Heizölangebot: Heizöl Standard ab 128,78 €/100L und Premium ab 133,16 €/100L — inkl. Lieferung und 19 % MwSt., Lieferung deutschlandweit.";
+  "Ihr persönliches Heizölangebot: Heizöl Standard ab 128,78 €/100L und Premium ab 133,16 €/100L — inkl. Lieferung und gesetzlicher Umsatzsteuer, Lieferung österreichweit.";
 
 export const Route = createFileRoute("/preisrechner/ergebnis")({
   validateSearch: (search: Record<string, unknown>) => {
     const menge = Number(search['menge']);
     const abladestellen = Number(search['abladestellen']);
     return {
-      plz: String(search['plz'] ?? "").replace(/\D/g, "").slice(0, 5),
+      plz: String(search['plz'] ?? "").replace(/\D/g, "").slice(0, 4),
       menge: Number.isFinite(menge) && menge > 0 ? Math.min(32000, Math.max(1500, menge)) : 3000,
       abladestellen:
         Number.isFinite(abladestellen) && abladestellen > 0 ? Math.min(10, abladestellen) : 1,
@@ -90,7 +88,6 @@ const PAYMENTS = [
   { label: "Vorkasse", img: vorauskasse.url },
   { label: "Bar", img: barzahlung.url },
   { label: "EC-Karte", img: ecKarte.url },
-  { label: "Rechnung", img: vorauskasse.url },
 ];
 
 const ADVANTAGES = [
@@ -101,18 +98,13 @@ const ADVANTAGES = [
   },
   {
     icon: Truck,
-    title: "Deutschlandweite Lieferung inklusive",
+    title: "Österreichweite Lieferung inklusive",
     text: "Alle Lieferkosten sind bereits im Preis enthalten.",
   },
   {
     icon: ShieldCheck,
     title: "100 % Käuferschutz garantiert",
     text: "Ihre Bestellung ist durch unsere Liefergarantie abgesichert.",
-  },
-  {
-    icon: Users,
-    title: "Über 25.000 zufriedene Kunden",
-    text: "Durchschnittsbewertung von 4,9/5 Sternen.",
   },
   {
     icon: Lock,
@@ -122,23 +114,11 @@ const ADVANTAGES = [
 ];
 
 const fmtEuro = (v: number) =>
-  v.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const fmtLiters = (v: number) => v.toLocaleString("de-DE");
+  v.toLocaleString("de-AT", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtLiters = (v: number) => v.toLocaleString("de-AT");
 
 const fieldClass =
   "mt-1.5 rounded-md border border-line bg-background px-3 py-3 text-[14px] text-hero-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand md:px-4";
-
-function Stars({ className = "size-4" }: { className?: string }) {
-  return (
-    <span className="inline-flex gap-0.5" aria-label="5 von 5 Sternen" role="img">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} viewBox="0 0 24 24" className={`${className} fill-[#f1a319]`} aria-hidden="true">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
 
 function ErgebnisPage() {
   const search = Route.useSearch();
@@ -175,14 +155,14 @@ function ErgebnisPage() {
   useEffect(() => {
     const now = new Date();
     setStand(
-      `${now.toLocaleDateString("de-DE")}, ${now.toLocaleTimeString("de-DE", {
+      `${now.toLocaleDateString("de-AT")}, ${now.toLocaleTimeString("de-AT", {
         hour: "2-digit",
         minute: "2-digit",
       })} Uhr`,
     );
     const d = new Date();
     d.setDate(d.getDate() + 7);
-    setDeliveryDate(d.toLocaleDateString("de-DE"));
+    setDeliveryDate(d.toLocaleDateString("de-AT"));
     setDeliveryIso(
       `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`,
     );
@@ -388,7 +368,7 @@ function ErgebnisPage() {
                 <p className="mt-1 text-[20px] font-bold leading-none text-conditions md:text-[22px]">
                   {fmtEuro(total)} €
                 </p>
-                <p className="mt-1 text-[11px] text-muted-custom">inkl. 19 % MwSt.</p>
+                <p className="mt-1 text-[11px] text-muted-custom">inkl. gesetzlicher Umsatzsteuer</p>
               </div>
             </div>
 
@@ -408,7 +388,7 @@ function ErgebnisPage() {
                   <CheckCircle2 className="h-4 w-4 text-brand" aria-hidden="true" />
                   ab {deliveryDate || "—"}
                 </p>
-                <p className="mt-0.5 text-[12px] text-muted-custom">Deutschlandweit</p>
+                <p className="mt-0.5 text-[12px] text-muted-custom">Österreichweit</p>
               </div>
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-muted-custom">
@@ -529,21 +509,8 @@ function ErgebnisPage() {
               </div>
             </div>
 
-            {/* Trust */}
-            <div className="flex items-center justify-center gap-4 border-b border-line px-5 py-4">
-              <img
-                src={ekomi.url}
-                alt="eKomi Gold Siegel"
-                className="h-11 w-auto object-contain"
-                loading="lazy"
-              />
-              <div>
-                <Stars className="size-3.5" />
-                <p className="mt-0.5 text-[12px] font-semibold text-ink">25.000+ Bewertungen</p>
-              </div>
-            </div>
             <p className="bg-surface px-5 py-2.5 text-center text-[11px] text-muted-custom">
-              Lieferung durch Heizöl Deutschland oder einen regionalen Partnerhändler
+              Lieferung durch Heizöl Austria oder einen regionalen Partnerhändler
             </p>
           </div>
 

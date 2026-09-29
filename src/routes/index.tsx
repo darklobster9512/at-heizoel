@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import { SiteHeader } from "@/components/landing/site-header";
 import { Hero } from "@/components/landing/hero";
-import { CustomerVoices } from "@/components/landing/customer-voices";
 import {
   PriceSearchLoading,
   type PriceSearchValues,
@@ -18,7 +17,6 @@ import {
   SiteFooter,
   Steps,
   ReferralBanner,
-  TrustBar,
   TrustLinks,
 } from "@/components/landing/sections";
 import { jsonLd, organization, pageMeta, service, webPage, website } from "@/lib/seo";
@@ -26,9 +24,9 @@ import { jsonLd, organization, pageMeta, service, webPage, website } from "@/lib
 
 
 const DESCRIPTION =
-  "Heizölpreise aus über 300 Händlern vergleichen und Heizöl deutschlandweit günstig online bestellen. Tagesaktuelle Preise, sichere Lieferung, 4,9/5 Sterne.";
+  "Deutsches Heizöl für Österreich vergleichen und Heizöl österreichweit günstig online bestellen. Tagesaktuelle Preise und Lieferung nach Österreich.";
 
-const TITLE = "Heizöl bestellen & Heizölpreise vergleichen | Heizöl DE";
+const TITLE = "Heizöl bestellen & Heizölpreise vergleichen | Heizöl Austria";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,7 +40,7 @@ export const Route = createFileRoute("/")({
         service({
           name: "Heizöl online bestellen",
           description:
-            "Heizölpreise vergleichen und Heizöl deutschlandweit ab 1.500 Litern online bestellen, Lieferung inklusive.",
+            "Heizölpreise vergleichen und Heizöl österreichweit ab 1.500 Litern online bestellen, Lieferung inklusive.",
           url: "/preisrechner",
         }),
       ),
@@ -65,9 +63,7 @@ function Index() {
           <main>
             <Hero onSearch={setSearchValues} />
             <ConditionsBox mobileOnly />
-            <TrustBar />
             <ConditionsBox />
-            <CustomerVoices />
             <Steps />
             <PersonalDataInfo />
             <MatchingOffers />

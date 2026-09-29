@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { COMPANY, CompanyAddress, ContactLinks, LegalPage } from "@/components/legal/legal-page";
 import { legalJsonLd } from "@/lib/seo";
 
-const TITLE = "Impressum | Heizöl Deutschland";
-const DESCRIPTION = "Impressum und Anbieterkennzeichnung von heizoel-deutschland.com, einem Onlineshop der Demovero GmbH in Berlin.";
+const TITLE = "Impressum | Heizöl Austria";
+const DESCRIPTION = "Impressum und Anbieterkennzeichnung von heizoel-austria.at, einem Onlineshop der Demovero GmbH in Berlin.";
 
 export const Route = createFileRoute("/impressum")({
   head: () => ({
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/impressum")({
 });
 
 function ImpressumPage() {
-  return <LegalPage title="Impressum" intro="Anbieterkennzeichnung und gesetzliche Pflichtangaben für heizoel-deutschland.com." sections={[
+  return <LegalPage title="Impressum" intro="Anbieterkennzeichnung und gesetzliche Pflichtangaben für heizoel-austria.at." sections={[
     { id: "anbieter", title: "Angaben gemäß § 5 DDG", content: <><p>{COMPANY.shop} ist ein Onlineshop der</p><CompanyAddress /></> },
     { id: "vertretung", title: "Vertretungsberechtigte Person", content: <p>Geschäftsführer: <strong className="text-ink">{COMPANY.director}</strong></p> },
     { id: "register", title: "Registereintrag", content: <p>{COMPANY.court}<br />Handelsregister: {COMPANY.register}</p> },
