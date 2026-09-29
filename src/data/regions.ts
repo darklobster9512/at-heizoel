@@ -33,8 +33,6 @@ export const PRICE_PREMIUM_PER_100 = 133.16;
 export const MIN_LITERS = 1500;
 export const SAMPLE_LITERS = 3000;
 export const DELIVERY_DAYS = 7;
-export const REVIEW_SCORE = "4,9";
-export const REVIEW_COUNT = "25.000";
 
 export const STATES: State[] = [
   { slug: "burgenland", name: "Burgenland", capital: "Eisenstadt", cityCount: 172, plzCount: 166, climate: "im pannonischen Osten mit warmen Sommern und kühlen Wintern", neighbours: ["niederoesterreich", "steiermark"] },

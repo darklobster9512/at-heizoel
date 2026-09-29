@@ -565,18 +565,6 @@ const FOOTER_RECHTLICHES = [
 
 
 
-function FooterStars() {
-  return (
-    <span className="inline-flex gap-0.5" aria-hidden="true">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} viewBox="0 0 24 24" className="size-4 fill-[#f1a319]">
-          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.45 4.73L5.82 21 12 17.27z" />
-        </svg>
-      ))}
-    </span>
-  );
-}
-
 function FooterLinkList({ items }: { items: { label: string; href: string }[] }) {
   return (
     <ul className="mt-3 space-y-2">
@@ -661,15 +649,6 @@ export function SiteFooter() {
                 loading="lazy"
               />
             </div>
-            <h4 className="mt-5 text-[12px] font-semibold uppercase tracking-[0.08em] text-ink">
-              Kundenbewertung
-            </h4>
-            <p className="mt-2 flex items-center gap-2 text-[13px] text-footer-text">
-              <FooterStars />
-              <span>
-                <strong className="font-semibold text-ink">4,9</strong>/5 – 25.000+ Bewertungen
-              </span>
-            </p>
           </div>
         </div>
       </div>
