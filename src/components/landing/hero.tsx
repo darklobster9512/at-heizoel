@@ -104,6 +104,8 @@ export function Hero({ onSearch }: { onSearch: (values: PriceSearchValues) => vo
             ))}
           </ul>
 
+          <div className="mt-10 hidden md:block">{trustBadges}</div>
+
         </div>
 
         <div id="rechner" className="relative scroll-mt-24">
