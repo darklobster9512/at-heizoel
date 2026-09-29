@@ -1,3 +1,7 @@
+const ntv = { url: "/img/ntv-gesamtsieger-2025.png" };
+const bild = { url: "/img/bild-empfehlung-2026.png" };
+const welt = { url: "/img/die-welt-service-champion-2025.png" };
+const dtgv = { url: "/img/dtgv-testsieger.png" };
 const guarantee = { url: "/img/guarantee.png" };
 import { OfferCard } from "./offer-card";
 import type { PriceSearchValues } from "./price-search-loading";
@@ -24,6 +28,39 @@ function Check() {
 }
 
 export function Hero({ onSearch }: { onSearch: (values: PriceSearchValues) => void }) {
+  const trustBadges = (
+    <div className="flex flex-nowrap items-center justify-center gap-3 pb-1 md:justify-start">
+      <img
+        src={ntv.url}
+        alt="ntv Gesamtsieger Heizöl-Preisvergleich 2025"
+        width={124}
+        height={124}
+        className="h-16 w-auto max-w-[96px] shrink-0 object-contain md:h-20 md:max-w-[170px]"
+      />
+      <img
+        src={bild.url}
+        alt="Bild Höchste Empfehlung 2026"
+        width={330}
+        height={227}
+        className="h-16 w-auto max-w-[96px] shrink-0 object-contain md:h-20 md:max-w-[170px]"
+      />
+      <img
+        src={welt.url}
+        alt="Die Welt Service-Champion 2025"
+        width={124}
+        height={154}
+        className="h-16 w-auto max-w-[96px] shrink-0 object-contain md:h-20 md:max-w-[170px]"
+      />
+      <img
+        src={dtgv.url}
+        alt="DtGV Testsieger Heizölportale"
+        width={330}
+        height={161}
+        className="hidden h-16 w-auto max-w-[140px] shrink-0 object-contain md:block md:h-20 md:max-w-[170px]"
+      />
+    </div>
+  );
+
   return (
     <section id="top" className="relative bg-surface">
       <div className="relative mx-auto grid max-w-6xl items-start gap-6 px-5 pb-[53px] pt-[29px] md:gap-10 md:py-12 lg:grid-cols-[1fr_510px] lg:py-14">
@@ -66,6 +103,8 @@ export function Hero({ onSearch }: { onSearch: (values: PriceSearchValues) => vo
               </li>
             ))}
           </ul>
+
+          <div className="mt-10 hidden md:block">{trustBadges}</div>
 
         </div>
 
