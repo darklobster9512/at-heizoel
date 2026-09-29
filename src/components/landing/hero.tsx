@@ -1,3 +1,7 @@
+const ntv = { url: "/img/ntv-gesamtsieger-2025.png" };
+const bild = { url: "/img/bild-empfehlung-2026.png" };
+const welt = { url: "/img/die-welt-service-champion-2025.png" };
+const dtgv = { url: "/img/dtgv-testsieger.png" };
 const guarantee = { url: "/img/guarantee.png" };
 import { OfferCard } from "./offer-card";
 import type { PriceSearchValues } from "./price-search-loading";
