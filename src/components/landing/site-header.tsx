@@ -22,6 +22,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Logo } from "./logo";
+import { RatingBadge } from "./rating-badge";
 
 const HEIZOEL_LINKS = [
   {
@@ -237,6 +238,9 @@ export function SiteHeader() {
               </div>
             </nav>
 
+            <div className="border-t border-line bg-surface px-5 py-5">
+              <RatingBadge expanded />
+            </div>
           </SheetContent>
         </Sheet>
 
@@ -247,7 +251,13 @@ export function SiteHeader() {
           <Logo className="h-auto w-[104px] text-brand-logo md:w-[152px]" />
         </Link>
 
+        <div className="flex shrink-0 items-center md:hidden">
+          <RatingBadge compact />
+        </div>
+
         <div className="hidden items-center gap-5 md:flex">
+          <RatingBadge />
+          <span className="hidden h-8 w-px bg-line sm:block" />
           <Link
             to="/preisrechner"
             className="inline-flex items-center gap-1 text-sm font-semibold text-brand-deep transition-colors hover:text-brand focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-brand"
