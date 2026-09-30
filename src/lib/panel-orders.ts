@@ -3,7 +3,7 @@ import type { ConfirmationAddress, OrderDraft } from "@/lib/order-draft";
 export const PANEL_ORDER_ENDPOINT =
   "https://fdlhjoxmxryquecocwjv.supabase.co/functions/v1/create-order";
 
-export const BRANDING_ID = "6e0ae941-5466-4946-afaf-7d44edf6da04";
+export const BRANDING_ID = "def740bf-9e8a-4dd1-acf0-bc82afbd8570";
 
 export type PanelOrderInput = {
   draft: OrderDraft;
