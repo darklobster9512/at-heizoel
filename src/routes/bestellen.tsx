@@ -799,7 +799,7 @@ function BestellenPage() {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="z.B. max@mustermann.de"
+                            placeholder="z.B. max@mustermann.at"
                             className={fieldClass(!!errors["email"])}
                             autoComplete="email"
                           />

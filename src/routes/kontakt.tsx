@@ -398,7 +398,7 @@ function KontaktPage() {
                           id="email"
                           name="email"
                           type="email"
-                          placeholder="ihre@email.de"
+                          placeholder="ihre@email.at"
                           maxLength={255}
                           required
                         />
