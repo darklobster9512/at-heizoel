@@ -78,6 +78,7 @@
   --color-hero-text: var(--hero-text);
   --color-scrollbar-track: var(--scrollbar-track);
   --color-scrollbar-thumb: var(--scrollbar-thumb);
+  --color-rating: var(--rating);
 
 
   /* Typography */
@@ -114,6 +115,7 @@
   --hero-text: #323232;
   --scrollbar-track: #e5e7eb;
   --scrollbar-thumb: #6b7280;
+  --rating: oklch(0.76 0.16 72);
 
 
   --card: oklch(1 0 0);
@@ -167,6 +169,7 @@
   --footer-text: #323232;
   --header-phone: #5b5b5b;
   --hero-text: #f0f0f0;
+  --rating: oklch(0.8 0.14 72);
 
 
   --card: oklch(0.21 0.018 250);
