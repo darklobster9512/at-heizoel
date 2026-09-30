@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { CheckSquare } from "lucide-react";
-
+import { RatingBadge } from "./rating-badge";
 
 export interface PriceSearchValues {
   plz: string;
@@ -77,7 +77,9 @@ export function PriceSearchLoading({ values }: { values: PriceSearchValues }) {
             showTrust ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           }`}
         >
-          <p className="text-sm text-muted-custom">Deutsches Heizöl für Österreich</p>
+          <div className="flex justify-center">
+            <RatingBadge compact cycle={false} />
+          </div>
         </div>
       </div>
     </main>
