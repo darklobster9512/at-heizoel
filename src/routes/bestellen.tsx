@@ -810,7 +810,7 @@ function BestellenPage() {
                               type="tel"
                               value={phone}
                               onChange={(e) => setPhone(e.target.value)}
-                              placeholder="z.B. 0170 1234567"
+                              placeholder="z.B. 0664 1234567"
                               className={fieldClass(!!errors["phone"])}
                               autoComplete="tel"
                             />
