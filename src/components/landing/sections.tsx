@@ -62,7 +62,7 @@ export function ConditionsBox({ mobileOnly = false }: { mobileOnly?: boolean }) 
       aria-label="Preis Übersicht"
       className={mobileOnly ? "bg-surface md:hidden" : "hidden bg-background md:block"}
     >
-      <div className={`mx-auto max-w-6xl px-5 ${mobileOnly ? "pb-5 pt-4" : "pb-12"}`}>
+      <div className={`mx-auto max-w-6xl px-5 ${mobileOnly ? "pb-5 pt-4" : "pb-12 pt-6"}`}>
         <div className="rounded-md bg-line px-4 py-4 md:bg-surface md:px-6 md:py-5">
           <h2 className="text-[14px] font-bold text-conditions">
             Heizöl Preis-Übersicht
