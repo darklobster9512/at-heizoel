@@ -410,7 +410,7 @@ function KontaktPage() {
                           id="phone"
                           name="phone"
                           type="tel"
-                          placeholder="z. B. 0176 12345678"
+                          placeholder="z. B. 0664 1234567"
                           maxLength={30}
                           required
                         />
