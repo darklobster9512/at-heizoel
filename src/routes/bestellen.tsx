@@ -571,7 +571,7 @@ function BestellenPage() {
               {fmtEuro(draft.total)} €
             </p>
             <p className="text-[11px] uppercase tracking-wide text-muted-custom">
-              {fmtEuro(draft.pricePer100)} €/100 L · inkl. MwSt.
+              {fmtEuro(draft.pricePer100)} €/100 L · inkl. 20 % MwSt.
             </p>
           </div>
         </div>
@@ -995,7 +995,7 @@ function BestellenPage() {
                         <p className="text-[17px] font-bold text-conditions">Gesamtpreis</p>
                         <p className="text-[18px] font-bold text-conditions">{fmtEuro(draft.total)} €</p>
                       </div>
-                      <p className="mt-2 text-[12px] text-muted-custom">inkl. gesetzlicher Umsatzsteuer &amp; Lieferung — Tagespreis bindend bei Bestellung</p>
+                      <p className="mt-2 text-[12px] text-muted-custom">inkl. 20 % MwSt. &amp; Lieferung — Tagespreis bindend bei Bestellung</p>
                     </section>
                   </div>
 
@@ -1072,7 +1072,7 @@ function BestellenPage() {
               <p className="text-[17px] font-bold leading-tight text-conditions">
                 {fmtEuro(draft.total)} €
               </p>
-              <p className="text-[12px] text-muted-custom">inkl. MwSt. · kostenlose Lieferung</p>
+              <p className="text-[12px] text-muted-custom">inkl. 20 % MwSt. · kostenlose Lieferung</p>
             </div>
             {step === 1 ? (
               <button

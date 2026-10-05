@@ -32,7 +32,7 @@ import { trackPixelEvent } from "@/lib/meta-pixel";
 
 const TITLE = "Ihr persönliches Heizölangebot | Heizöl Austria";
 const DESCRIPTION =
-  "Ihr persönliches Heizölangebot: Heizöl Standard ab 128,78 €/100L und Premium ab 133,16 €/100L — inkl. Lieferung und gesetzlicher Umsatzsteuer, Lieferung österreichweit.";
+  "Ihr persönliches Heizölangebot: Heizöl Standard ab 128,78 €/100L und Premium ab 133,16 €/100L — inkl. Lieferung und 20 % MwSt., Lieferung österreichweit.";
 
 export const Route = createFileRoute("/preisrechner/ergebnis")({
   validateSearch: (search: Record<string, unknown>) => {
@@ -368,7 +368,7 @@ function ErgebnisPage() {
                 <p className="mt-1 text-[20px] font-bold leading-none text-conditions md:text-[22px]">
                   {fmtEuro(total)} €
                 </p>
-                <p className="mt-1 text-[11px] text-muted-custom">inkl. gesetzlicher Umsatzsteuer</p>
+                <p className="mt-1 text-[11px] text-muted-custom">inkl. 20 % MwSt.</p>
               </div>
             </div>
 

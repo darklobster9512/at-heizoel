@@ -173,7 +173,7 @@ function BestaetigungPage() {
                   <dd className="text-[24px] font-bold leading-tight text-conditions">
                     {fmtEuro(order.total)} €
                   </dd>
-                  <p className="text-[12px] text-muted-custom">inkl. Lieferung &amp; MwSt.</p>
+                  <p className="text-[12px] text-muted-custom">inkl. Lieferung &amp; 20 % MwSt.</p>
                 </div>
                 <div className="text-right">
                   <p className="text-[11px] uppercase tracking-wide text-muted-custom">

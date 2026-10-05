@@ -765,7 +765,7 @@ export function HeizoelServiceIntro() {
             ohne Registrierung in <strong>2 Minuten</strong>. Wir bieten sowohl{" "}
             <strong>Heizöl Standard</strong> (günstige Basisvariante) als auch <strong>Heizöl Premium</strong> (mit
             Additiven für geringeren Verbrauch und längere Lagerfähigkeit). Alle Preise sind{" "}
-            <strong>Endpreise inklusive MwSt. und Lieferung</strong> — angegeben in <strong>€/100L</strong>.
+            <strong>Endpreise inklusive 20 % MwSt. und Lieferung</strong> — angegeben in <strong>€/100L</strong>.
           </p>
           <p>
             Die verfügbaren Zahlungsarten und Liefertermine werden Ihnen bei der Bestellung angezeigt.
