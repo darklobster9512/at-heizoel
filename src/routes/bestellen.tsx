@@ -70,9 +70,9 @@ type Salutation = "Herr" | "Frau" | "Firma";
 const SALUTATIONS: Salutation[] = ["Herr", "Frau", "Firma"];
 
 const PAYMENT_OPTIONS: { id: string; label: string; desc: string; icon: { url: string }; hint?: string; badge?: string }[] = [
-  { id: "vorkasse", label: "Vorkasse", desc: "Bequem per Überweisung bezahlen.", icon: vorauskasse },
-  { id: "bar", label: "Barzahlung", desc: "Direkt bei Lieferung bezahlen.", icon: barzahlung, hint: "50% Anzahlung sichert Tagespreis" },
-  { id: "ec", label: "EC-Karte", desc: "Bei Lieferung mit Karte bezahlen.", icon: ecKarte, hint: "50% Anzahlung sichert Tagespreis" },
+  { id: "ec", label: "EC-Karte", desc: "Bei Lieferung mit Karte bezahlen.", icon: ecKarte },
+  { id: "bar", label: "Barzahlung", desc: "Direkt bei Lieferung bezahlen.", icon: barzahlung },
+  { id: "vorkasse", label: "Rechnung", desc: "Bequem per Rechnung bezahlen.", icon: vorauskasse },
   { id: "klarna", label: "Klarna Sofortüberweisung", desc: "Sofort per Online-Banking bezahlen – sicher über Klarna.", icon: { url: "/img/klarna.webp" } },
   { id: "klarna-cc", label: "Kreditkarte", desc: "Sichere Zahlung per Kreditkarte – abgewickelt über Klarna.", icon: { url: "/img/klarna.webp" } },
   { id: "klarna-rechnung", label: "Rechnung – in 30 Tagen bezahlen", desc: "Bequem später zahlen – abgewickelt über Klarna.", icon: { url: "/img/klarna.webp" } },
@@ -331,7 +331,7 @@ function BestellenPage() {
   const [billingDifferent, setBillingDifferent] = useState(false);
   const [billing, setBilling] = useState<AddressForm>(emptyAddress());
   const [notes, setNotes] = useState("");
-  const [payment, setPayment] = useState("vorkasse");
+  const [payment, setPayment] = useState("ec");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
