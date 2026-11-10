@@ -32,7 +32,7 @@ import { ReviewCarousel, ReviewStars } from "@/components/landing/review-carouse
 const ekomi = { url: "/img/ekomi.webp" };
 const trustedShops = { url: "/img/trusted-shops-icon.png" };
 const googleIcon = { url: "/img/google-icon.webp" };
-const vorauskasse = { url: "/img/vorauskasse.png" };
+const vorauskasse = { url: "/img/rechnung.png" };
 const barzahlung = { url: "/img/barzahlung.png" };
 const ecKarte = { url: "/img/ec-karte.png" };
 
