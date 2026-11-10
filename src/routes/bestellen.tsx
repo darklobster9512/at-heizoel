@@ -72,7 +72,7 @@ const SALUTATIONS: Salutation[] = ["Herr", "Frau", "Firma"];
 const PAYMENT_OPTIONS: { id: string; label: string; desc: string; icon: { url: string }; hint?: string; badge?: string }[] = [
   { id: "ec", label: "EC-Karte", desc: "Bei Lieferung mit Karte bezahlen.", icon: ecKarte },
   { id: "bar", label: "Barzahlung", desc: "Direkt bei Lieferung bezahlen.", icon: barzahlung },
-  { id: "vorkasse", label: "Rechnung", desc: "Bequem per Rechnung bezahlen.", icon: vorauskasse },
+  { id: "rechnung", label: "Rechnung", desc: "Bequem per Rechnung bezahlen.", icon: vorauskasse },
   { id: "klarna", label: "Klarna Sofortüberweisung", desc: "Sofort per Online-Banking bezahlen – sicher über Klarna.", icon: { url: "/img/klarna.webp" } },
   { id: "klarna-cc", label: "Kreditkarte", desc: "Sichere Zahlung per Kreditkarte – abgewickelt über Klarna.", icon: { url: "/img/klarna.webp" } },
   { id: "klarna-rechnung", label: "Rechnung – in 30 Tagen bezahlen", desc: "Bequem später zahlen – abgewickelt über Klarna.", icon: { url: "/img/klarna.webp" } },
