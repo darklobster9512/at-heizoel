@@ -13,7 +13,7 @@ export const COMPANY = {
   register: "HRB 283996 B",
   director: "Koko Goldmann",
   vatId: "DE281404005",
-  email: "info@heizoel-deutschland.com",
+  email: "info@heizoel-austria.com",
 } as const;
 
 export type LegalSection = {

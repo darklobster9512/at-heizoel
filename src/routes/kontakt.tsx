@@ -91,9 +91,9 @@ const CONTACTS: ContactItem[] = [
   {
     icon: Mail,
     title: "E-Mail",
-    value: "info@heizoel-deutschland.com",
+    value: "info@heizoel-austria.com",
     hint: "Wir antworten schnellstmöglich",
-    href: "mailto:info@heizoel-deutschland.com",
+    href: "mailto:info@heizoel-austria.com",
     isInternal: false,
   },
   {
