@@ -10,7 +10,7 @@ import {
 import { SiteHeader } from "@/components/landing/site-header";
 import { ReferralBanner, SiteFooter } from "@/components/landing/sections";
 const barzahlungAsset = { url: "/img/barzahlung.png" };
-const vorauskasseAsset = { url: "/img/vorauskasse.png" };
+const rechnungAsset = { url: "/img/rechnung.png" };
 const ecKarteAsset = { url: "/img/ec-karte.png" };
 const lieferfristAsset = { url: "/img/lieferfrist.png" };
 
@@ -25,7 +25,7 @@ import {
 
 const TITLE = "Heizöl Lieferung & Zahlung: Ablauf, Fristen, Zahlarten";
 const DESCRIPTION =
-  "Heizöl-Lieferung in ca. 7 Werktagen österreichweit: Ablauf am Liefertag, Schlauchlängen, Abladestellen und Zahlung per Vorkasse, Bar oder EC-Karte ohne Aufpreis.";
+  "Heizöl-Lieferung in ca. 7 Werktagen österreichweit: Ablauf am Liefertag, Schlauchlängen, Abladestellen und Zahlung per EC-Karte, bar oder auf Rechnung ohne Aufpreis.";
 const URL = "/lieferung-zahlung";
 
 export const Route = createFileRoute("/lieferung-zahlung")({
@@ -61,7 +61,7 @@ const USPS = [
   {
     icon: Wallet,
     title: "Flexible Zahlung",
-    text: "Bar, EC-Karte, Vorauskasse",
+    text: "EC-Karte, Bar oder Rechnung",
   },
   {
     icon: Lock,
@@ -94,13 +94,12 @@ const PAYMENT_METHODS = [
     ],
   },
   {
-    image: vorauskasseAsset.url,
-    alt: "Vorauskasse — Überweisung vor der Lieferung",
-    title: "Vorauskasse",
+    image: rechnungAsset.url,
+    alt: "Rechnung — Überweisung nach der Lieferung",
+    title: "Rechnung",
     paragraphs: [
-      "Die Bezahlung erfolgt durch Überweisung vor der Lieferung direkt auf das Konto des Lieferanten.",
-      "Die Kontodaten erhalten Sie mit der Auftragsbestätigung des Händlers oder in separater E-Mail.",
-      "Sollte Ihre bestellte und gezahlte Menge nicht in Ihren Heizöltank passen, wird Ihnen der überschüssige Betrag direkt vom Lieferanten erstattet.",
+      "Sie erhalten nach der Lieferung eine Rechnung und überweisen den Betrag bequem auf das angegebene Konto.",
+      "Abgerechnet wird litergenau die tatsächlich getankte Menge.",
     ],
   },
   {

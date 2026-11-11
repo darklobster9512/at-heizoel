@@ -40,7 +40,7 @@ const FAQ_LD = [
   },
   {
     q: "Welche Zahlungsarten sind möglich?",
-    a: "Sie zahlen per Vorkasse, in bar bei Lieferung oder mit EC-Karte bei Lieferung. Die verfügbaren Zahlungsarten sehen Sie vor dem Bestellabschluss.",
+    a: "Sie zahlen mit EC-Karte oder in bar bei Lieferung oder bequem per Rechnung. Die verfügbaren Zahlungsarten sehen Sie vor dem Bestellabschluss.",
   },
   {
     q: "Ist die Lieferung im Heizölpreis enthalten?",
@@ -247,7 +247,7 @@ const SECTIONS: FaqSection[] = [
           <P>
             Abgerechnet wird immer litergenau die tatsächlich getankte Menge zum Preis Ihres
             Bestelltages. Passt weniger Heizöl in den Tank als bestellt, zahlen Sie entsprechend
-            weniger; bei Vorauskasse wird Ihnen der überschüssige Betrag vom Lieferanten erstattet.
+            weniger.
           </P>
         ),
       },
@@ -391,9 +391,9 @@ const SECTIONS: FaqSection[] = [
         a: (
           <>
             <P>
-              Zur Verfügung stehen <strong className="text-ink">Barzahlung</strong> nach der
-              Betankung, Zahlung per <strong className="text-ink">EC-Karte (Girocard)</strong> am
-              Tankwagen sowie <strong className="text-ink">Vorauskasse</strong> per Überweisung. Alle
+              Zur Verfügung stehen Zahlung per <strong className="text-ink">EC-Karte (Girocard)</strong> am
+              Tankwagen, <strong className="text-ink">Barzahlung</strong> nach der Betankung sowie
+              Zahlung auf <strong className="text-ink">Rechnung</strong>. Alle
               Zahlungsarten sind ohne Aufpreis.
             </P>
             <P>
@@ -404,20 +404,11 @@ const SECTIONS: FaqSection[] = [
         ),
       },
       {
-        q: "Was ist, wenn bei Zahlungsart Vorauskasse die bestellte Menge nicht in den Tank passt?",
-        a: (
-          <P>
-            Dann wird litergenau die tatsächlich getankte Menge abgerechnet und Ihnen der zu viel
-            gezahlte Betrag direkt vom Lieferanten erstattet.
-          </P>
-        ),
-      },
-      {
         q: "Kann man auch mit Kreditkarte bezahlen?",
         a: (
           <P>
             Nein, eine Kreditkartenzahlung ist nicht möglich. Bitte nutzen Sie Barzahlung, EC-Karte
-            oder Vorauskasse.
+            oder Rechnung.
           </P>
         ),
       },

@@ -21,7 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-const vorauskasse = { url: "/img/vorauskasse.png" };
+const rechnung = { url: "/img/rechnung.png" };
 const barzahlung = { url: "/img/barzahlung.png" };
 const ecKarte = { url: "/img/ec-karte.png" };
 const dropGreen = { url: "/img/drop-green.png" };
@@ -85,9 +85,9 @@ const COMPARE_ROWS = [
 ];
 
 const PAYMENTS = [
-  { label: "Vorkasse", img: vorauskasse.url },
-  { label: "Bar", img: barzahlung.url },
   { label: "EC-Karte", img: ecKarte.url },
+  { label: "Bar", img: barzahlung.url },
+  { label: "Rechnung", img: rechnung.url },
 ];
 
 const ADVANTAGES = [
