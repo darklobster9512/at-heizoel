@@ -390,8 +390,8 @@ function PreisrechnerPage() {
                   <strong>Heizöl Premium</strong> (mit Additiven für ca. 5%
                   niedrigeren Verbrauch und längere Lagerfähigkeit) wählen. (3){" "}
                   <strong>Zahlungsart bestimmen und Wunsch-Liefertermin</strong>{" "}
-                  in den nächsten 7 Werktagen festlegen — Vorkasse, Rechnung,
-                  EC-Karte oder Bar bei Lieferung, alle ohne Aufpreis. Die
+                  in den nächsten 7 Werktagen festlegen — EC-Karte, Bar bei
+                  Lieferung oder Rechnung, alle ohne Aufpreis. Die
                   Heizölpreis-Garantie bedeutet: Ihr Preis ist bindend ab
                   Bestellabschluss — auch wenn die Heizölpreise bis zur Lieferung
                   steigen sollten, zahlen Sie nur den fixierten Betrag.

@@ -114,7 +114,7 @@ function OverviewPage() {
               heading: "Heizöl bestellen: Ablauf, Menge und Zahlung",
               paragraphs: [
                 `Die Mindestbestellmenge beträgt ${num(MIN_LITERS)} Liter, größere Mengen senken den Preis pro 100 Liter. Die Bestellung erfolgt in drei Schritten: Postleitzahl und Menge eingeben, Heizölsorte wählen, Zahlungsart und Wunschtermin festlegen.`,
-                `Bezahlt wird per Vorkasse, EC-Karte oder bar bei Lieferung. Vergleichen Sie den Endpreis für Ihre österreichische Lieferadresse.`,
+                `Bezahlt wird per EC-Karte, bar bei Lieferung oder auf Rechnung. Vergleichen Sie den Endpreis für Ihre österreichische Lieferadresse.`,
               ],
             },
           ]}
