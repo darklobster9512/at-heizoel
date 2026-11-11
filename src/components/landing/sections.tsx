@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./logo";
 const barzahlungAsset = { url: "/img/barzahlung.png" };
-const vorauskasseAsset = { url: "/img/vorauskasse.png" };
+const rechnungAsset = { url: "/img/rechnung.png" };
 const ecKarteAsset = { url: "/img/ec-karte.png" };
 
 export function SectionHead({
@@ -37,7 +37,7 @@ const CONDITIONS_LEFT = [
 
 const CONDITIONS_RIGHT = [
   ["Lieferzeit:", "ca. 4 bis 10 Werktage, Express möglich"],
-  ["Zahlungsarten:", "Vorkasse, Bar, EC-Karte"],
+  ["Zahlungsarten:", "EC-Karte, Bar, Rechnung"],
 ];
 
 function ConditionsList({ items }: { items: string[][] }) {
@@ -631,20 +631,20 @@ export function SiteFooter() {
             </h4>
             <div className="mt-3 flex flex-wrap items-center gap-3">
               <img
+                src={ecKarteAsset.url}
+                alt="EC-Karte"
+                className="h-10 w-auto object-contain md:h-12"
+                loading="lazy"
+              />
+              <img
                 src={barzahlungAsset.url}
                 alt="Barzahlung"
                 className="h-10 w-auto object-contain md:h-12"
                 loading="lazy"
               />
               <img
-                src={vorauskasseAsset.url}
-                alt="Vorauskasse"
-                className="h-10 w-auto object-contain md:h-12"
-                loading="lazy"
-              />
-              <img
-                src={ecKarteAsset.url}
-                alt="EC-Karte"
+                src={rechnungAsset.url}
+                alt="Rechnung"
                 className="h-10 w-auto object-contain md:h-12"
                 loading="lazy"
               />
