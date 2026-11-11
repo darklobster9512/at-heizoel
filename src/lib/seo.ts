@@ -5,7 +5,7 @@
 
 export const SITE_NAME = "Heizöl Austria";
 export const LEGAL_NAME = "Demovero GmbH";
-export const SITE_EMAIL = "info@heizoel-deutschland.com";
+export const SITE_EMAIL = "info@heizoel-austria.com";
 export const SITE_PHONE = "+49 30 5678 9000";
 
 export const ORG_ID = "/#organization";

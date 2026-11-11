@@ -581,7 +581,7 @@ function FaqPage() {
                 </p>
               </div>
               <a
-                href="mailto:info@heizoel-deutschland.com"
+                href="mailto:info@heizoel-austria.com"
                 className="mt-4 inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-2 rounded-lg bg-brand px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90 sm:w-auto md:mt-0"
               >
                 <Mail className="h-4 w-4 text-white" aria-hidden="true" />
